@@ -1,0 +1,25 @@
+<mat-form-field class="full-width">
+  <input type="text" matInput placeholder="name" [(ngModel)]="obj.name" [ngModelOptions]="{standalone:true}">
+</mat-form-field>
+<mat-form-field class="full-width">
+  <input type="text" matInput placeholder="nofb" [(ngModel)]="obj.nofb" [ngModelOptions]="{standalone:true}">
+</mat-form-field>
+<mat-form-field class="full-width">
+  <input type="text" matInput placeholder="role" [(ngModel)]="obj.role" [ngModelOptions]="{standalone:true}">
+</mat-form-field>
+<mat-form-field class="full-width">
+  <input type="text" matInput placeholder="position" [(ngModel)]="obj.position" [ngModelOptions]="{standalone:true}">
+</mat-form-field>
+<mat-form-field class="full-width">
+  <input type="text" matInput placeholder="idnum" [(ngModel)]="obj.idnum" [ngModelOptions]="{standalone:true}">
+</mat-form-field>
+<mat-form-field class="full-width">
+  <input type="text" matInput placeholder="phone" [(ngModel)]="obj.phone" [ngModelOptions]="{standalone:true}">
+</mat-form-field>
+<mat-form-field class="full-width">
+  <input type="text" matInput placeholder="hp" [(ngModel)]="obj.hp" [ngModelOptions]="{standalone:true}">
+</mat-form-field>
+<mat-form-field class="full-width">
+  <input type="text" matInput placeholder="email" [(ngModel)]="obj.email" [ngModelOptions]="{standalone:true}">
+</mat-form-field>
+<button mat-button (click)="updatePic(obj)">Update</button>
