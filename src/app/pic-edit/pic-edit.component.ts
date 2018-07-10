@@ -9,6 +9,7 @@ import { PicService } from '../pic.service';
 })
 export class PicEditComponent implements OnInit {
   obj = {}
+  
   constructor(private route : ActivatedRoute,private pic : PicService) {
     this.pic.getPic({nofb:route.snapshot.params.nofb,role:route.snapshot.params.role},result => {
       console.log("get pic",result)

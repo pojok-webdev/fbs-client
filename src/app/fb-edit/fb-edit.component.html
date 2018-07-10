@@ -1,37 +1,100 @@
-  <mat-form-field class="full-width">
-    <input type="text" matInput placeholder="Name" [(ngModel)]="obj.name" [ngModelOptions]="{standalone:true}">
-  </mat-form-field>
-  <mat-form-field class="full-width">
-    <input type="text" matInput placeholder="No. FB" [(ngModel)]="obj.nofb" [ngModelOptions]="{standalone:true}">
-  </mat-form-field>
-  <mat-form-field class="full-width">
-    <input type="text" matInput placeholder="SIUP" [(ngModel)]="obj.siup" [ngModelOptions]="{standalone:true}">
-  </mat-form-field>
-  <mat-form-field class="full-width">
-    <input type="text" matInput placeholder="NPWP" [(ngModel)]="obj.npwp" [ngModelOptions]="{standalone:true}">
-  </mat-form-field>
-  <mat-form-field class="full-width">
-    <input type="text" matInput placeholder="SPPKP" [(ngModel)]="obj.sppkp" [ngModelOptions]="{standalone:true}">
-  </mat-form-field>
-  <mat-form-field class="full-width">
-    <input type="text" matInput placeholder="Address" [(ngModel)]="obj.address" [ngModelOptions]="{standalone:true}">
-  </mat-form-field>
-  <mat-form-field class="full-width">
-    <input type="text" matInput placeholder="City" [(ngModel)]="obj.city" [ngModelOptions]="{standalone:true}">
-  </mat-form-field>
-  <mat-form-field class="full-width">
-    <input type="text" matInput [matDatepicker]="activationdate" placeholder="Activation Date" [(ngModel)]="obj.activationdate" [ngModelOptions]="{standalone:true}">
-    <mat-datepicker-toggle matSuffix [for]="activationdate"></mat-datepicker-toggle>
-    <mat-datepicker #activationdate></mat-datepicker>
-  </mat-form-field>
-  <mat-form-field class="full-width">
-    <input type="text" matInput [matDatepicker]="period1" placeholder="Period 1" [(ngModel)]="obj.period1" [ngModelOptions]="{standalone:true}">
-    <mat-datepicker-toggle matSuffix [for]="period1"></mat-datepicker-toggle>
-    <mat-datepicker #period1></mat-datepicker>
-  </mat-form-field>
-  <mat-form-field class="full-width">
-    <input type="text" matInput [matDatepicker]="period2" placeholder="Period 2" [(ngModel)]="obj.period2" [ngModelOptions]="{standalone:true}">
-    <mat-datepicker-toggle matSuffix [for]="period2"></mat-datepicker-toggle>
-    <mat-datepicker #period2></mat-datepicker>
-  </mat-form-field>
-  <button mat-button (click)="updateFb(obj)">Update</button>
+<h1>Edit FB</h1>  
+<mat-tab-group>
+  <mat-tab label="FB">
+      <mat-toolbar>
+          <mat-toolbar-row>
+            <button mat-button mat-raised-button color="accent" (click)="updateFb(obj)">Update</button>
+          </mat-toolbar-row>
+      </mat-toolbar>  
+    <mat-form-field class="full-width">
+      <input type="text" matInput placeholder="Name" [(ngModel)]="obj.name" [ngModelOptions]="{standalone:true}">
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input type="text" matInput placeholder="No. FB" [(ngModel)]="obj.nofb" [ngModelOptions]="{standalone:true}">
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input type="text" matInput placeholder="SIUP" [(ngModel)]="obj.siup" [ngModelOptions]="{standalone:true}">
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input type="text" matInput placeholder="NPWP" [(ngModel)]="obj.npwp" [ngModelOptions]="{standalone:true}">
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input type="text" matInput placeholder="SPPKP" [(ngModel)]="obj.sppkp" [ngModelOptions]="{standalone:true}">
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input type="text" matInput placeholder="Address" [(ngModel)]="obj.address" [ngModelOptions]="{standalone:true}">
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input type="text" matInput placeholder="City" [(ngModel)]="obj.city" [ngModelOptions]="{standalone:true}">
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input type="text" matInput [matDatepicker]="activationdate" placeholder="Activation Date" [(ngModel)]="obj.activationdate" [ngModelOptions]="{standalone:true}">
+      <mat-datepicker-toggle matSuffix [for]="activationdate"></mat-datepicker-toggle>
+      <mat-datepicker #activationdate></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input type="text" matInput [matDatepicker]="period1" placeholder="Period 1" [(ngModel)]="obj.period1" [ngModelOptions]="{standalone:true}">
+      <mat-datepicker-toggle matSuffix [for]="period1"></mat-datepicker-toggle>
+      <mat-datepicker #period1></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input type="text" matInput [matDatepicker]="period2" placeholder="Period 2" [(ngModel)]="obj.period2" [ngModelOptions]="{standalone:true}">
+      <mat-datepicker-toggle matSuffix [for]="period2"></mat-datepicker-toggle>
+      <mat-datepicker #period2></mat-datepicker>
+    </mat-form-field>      
+  </mat-tab>
+  <mat-tab label="PIC">
+    <mat-toolbar>
+      <mat-toolbar-row>
+          <button mat-button mat-raised-button color="gold">Add PIC</button>
+      </mat-toolbar-row>
+    </mat-toolbar>
+    <table class="full-width" mat-table [dataSource]="picsDS" >
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let pic">{{ pic.name }}</td>
+      </ng-container>
+      <ng-container matColumnDef="role">
+          <th mat-header-cell *matHeaderCellDef>Role</th>
+          <td mat-cell *matCellDef="let pic">{{ pic.role }}</td>
+      </ng-container>
+      <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef>Position</th>
+          <td mat-cell *matCellDef="let pic">{{ pic.position }}</td>
+      </ng-container>
+      <ng-container matColumnDef="idnum">
+          <th mat-header-cell *matHeaderCellDef>Idnum</th>
+          <td mat-cell *matCellDef="let pic">{{ pic.idnum }}</td>
+      </ng-container>
+      <ng-container matColumnDef="phone">
+          <th mat-header-cell *matHeaderCellDef>Phone</th>
+          <td mat-cell *matCellDef="let pic">{{ pic.phone }}</td>
+      </ng-container>
+      <ng-container matColumnDef="hp">
+          <th mat-header-cell *matHeaderCellDef>HP</th>
+          <td mat-cell *matCellDef="let pic">{{ pic.hp }}</td>
+      </ng-container>
+      <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef>Email</th>
+          <td mat-cell *matCellDef="let pic">{{ pic.email }}</td>
+      </ng-container>
+      <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef>Actions</th>
+          <td mat-cell *matCellDef="let pic">
+            <mat-select placeholder="Pilih">
+              <mat-option routerLink="/picedit/{{pic.nofb}}/{{pic.role}}">Edit</mat-option>
+            </mat-select>
+          </td>
+      </ng-container>
+        <tr mat-header-row *matHeaderRowDef="picsColumn"></tr>
+      <tr mat-row *matRowDef="let row;columns:picsColumn"></tr>
+    </table>
+  </mat-tab>
+  <mat-tab label="Services">
+    <mat-toolbar>
+      <mat-toolbar-row>
+          <button mat-button mat-raised-button color="gold">Add Service</button>
+      </mat-toolbar-row>
+    </mat-toolbar>
+  </mat-tab>
+</mat-tab-group>

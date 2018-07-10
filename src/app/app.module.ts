@@ -9,7 +9,7 @@ import { AppRouteModule } from './app-route/app-route.module';
 import { HttpClientModule } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
 import { CdkTableModule } from '@angular/cdk/table';
-import { MatMenuModule, MatSelectModule, MatInputModule, MatDatepickerModule, MatNativeDateModule } from '@angular/material';
+import { MatMenuModule, MatSelectModule, MatInputModule, MatDatepickerModule, MatNativeDateModule, MatDividerModule, MatButtonModule, MatTabsModule, MatToolbarModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FbEditComponent } from './fb-edit/fb-edit.component'
 import { DatePipe } from '@angular/common';
@@ -37,6 +37,10 @@ import { PicEditComponent } from './pic-edit/pic-edit.component';
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatDividerModule,
+    MatButtonModule,
+    MatTabsModule,
+    MatToolbarModule,
     FormsModule
   ],
   providers: [
