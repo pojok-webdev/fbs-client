@@ -14,13 +14,16 @@ import { PadiserviceService } from '../padiservice.service';
 export class FbEditComponent implements OnInit {
   obj = {} 
   picsColumn : String[] = ['name','role','position','idnum','phone','hp','email','actions']
-  picsDS = new MatTableDataSource([
-    {name: 'Bebob'},
-    {name: 'Rocksteady'}
-  ])
+  picsDS = new MatTableDataSource()
   serviceColumns = ['category','bandwidth','actions']
   serviceDS = new MatTableDataSource()
-  constructor(private fb:FbService,private pic : PicService,private padiService : PadiserviceService,private route : ActivatedRoute,private datePipe: DatePipe) {
+  constructor(
+    private fb:FbService,
+    private pic : PicService,
+    private padiService : PadiserviceService,
+    private route : ActivatedRoute,
+    private datePipe: DatePipe
+  ) {
     this.fb.getFb({nofb:this.route.snapshot.params.nofb},result => {
       console.log("selected FB",result)
       this.obj = result
