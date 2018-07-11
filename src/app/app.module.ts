@@ -16,13 +16,17 @@ import { DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { PicsComponent } from './pics/pics.component';
 import { PicEditComponent } from './pic-edit/pic-edit.component';
+import { PadiservicesComponent } from './padiservices/padiservices.component';
+import { PadiserviceAddComponent } from './padiservice-add/padiservice-add.component';
 @NgModule({
   declarations: [
     AppComponent,
     FbsComponent,
     FbEditComponent,
     PicsComponent,
-    PicEditComponent
+    PicEditComponent,
+    PadiservicesComponent,
+    PadiserviceAddComponent
   ],
   imports: [
     BrowserModule,

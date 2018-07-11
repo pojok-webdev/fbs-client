@@ -4,6 +4,7 @@ import { FbService } from '../fb.service';
 import { DatePipe } from '@angular/common';
 import { MatTableDataSource } from '@angular/material';
 import { PicService } from '../pic.service';
+import { PadiserviceService } from '../padiservice.service';
 
 @Component({
   selector: 'app-fb-edit',
@@ -17,8 +18,9 @@ export class FbEditComponent implements OnInit {
     {name: 'Bebob'},
     {name: 'Rocksteady'}
   ])
-
-  constructor(private fb:FbService,private pic : PicService,private route : ActivatedRoute,private datePipe: DatePipe) {
+  serviceColumns = ['category','bandwidth','actions']
+  serviceDS = new MatTableDataSource()
+  constructor(private fb:FbService,private pic : PicService,private padiService : PadiserviceService,private route : ActivatedRoute,private datePipe: DatePipe) {
     this.fb.getFb({nofb:this.route.snapshot.params.nofb},result => {
       console.log("selected FB",result)
       this.obj = result
@@ -26,6 +28,10 @@ export class FbEditComponent implements OnInit {
     this.pic.getPics({nofb:this.route.snapshot.params.nofb},result => {
       console.log("PICS",result)
       this.picsDS = new MatTableDataSource(result)
+    })
+    this.padiService.getServices({fb_id:this.route.snapshot.params.nofb}, result => {
+      console.log("Services",result)
+      this.serviceDS = new MatTableDataSource(result)
     })
   }
   updateFb(obj){
