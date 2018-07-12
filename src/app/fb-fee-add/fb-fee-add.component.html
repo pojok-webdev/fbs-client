@@ -1,4 +1,23 @@
 <p>
-  fb-fee-add works!
+  <mat-form-field class="full-width">
+      <input type="text" matInput placeholder="Client_id" [(ngModel)]="fee.client_id">
+  </mat-form-field>
+  <mat-form-field class="full-width">
+      <input type="text" matInput placeholder="No FB" [(ngModel)]="fee.nofb">
+  </mat-form-field>
+  <mat-form-field class="full-width">
+      <input type="text" matInput placeholder="Name" [(ngModel)]="fee.name">
+  </mat-form-field>
+  <mat-form-field class="full-width">
+      <input type="text" matInput placeholder="Amount" [(ngModel)]="fee.dpp">
+  </mat-form-field>
+  <mat-form-field class="full-width">
+      <input type="text" matInput placeholder="PPn" [(ngModel)]="fee.ppn">
+  </mat-form-field>
+  <mat-form-field class="full-width">
+      <input type="text" matInput placeholder="PPh" [(ngModel)]="fee.pph">
+  </mat-form-field>
+  
 </p>
+<button mat-button (click)="saveFee(fee)">Save</button>
 <button mat-button (click)="closeDialog()">Close</button>

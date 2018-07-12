@@ -19,6 +19,7 @@ import { PicEditComponent } from './pic-edit/pic-edit.component';
 import { PadiservicesComponent } from './padiservices/padiservices.component';
 import { PadiserviceAddComponent } from './padiservice-add/padiservice-add.component';
 import { FbFeeAddComponent } from './fb-fee-add/fb-fee-add.component';
+import { globalVars } from './globalVars';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,7 +52,8 @@ import { FbFeeAddComponent } from './fb-fee-add/fb-fee-add.component';
     FormsModule
   ],
   providers: [
-    DatePipe
+    DatePipe,
+    globalVars
   ],
   entryComponents:[FbFeeAddComponent],
   bootstrap: [AppComponent]

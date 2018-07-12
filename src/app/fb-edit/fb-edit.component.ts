@@ -6,6 +6,7 @@ import { MatTableDataSource, MatDialog } from '@angular/material';
 import { PicService } from '../pic.service';
 import { PadiserviceService } from '../padiservice.service';
 import { FbFeeAddComponent } from '../fb-fee-add/fb-fee-add.component';
+import { FbfeeService } from '../fbfee.service';
 
 @Component({
   selector: 'app-fb-edit',
@@ -24,7 +25,8 @@ export class FbEditComponent implements OnInit {
     private padiService : PadiserviceService,
     private route : ActivatedRoute,
     private dialog : MatDialog,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    private fee:FbfeeService
   ) {
     this.fb.getFb({nofb:this.route.snapshot.params.nofb},result => {
       console.log("selected FB",result)
