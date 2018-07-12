@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'
 import { FbService } from '../fb.service';
 import { DatePipe } from '@angular/common';
-import { MatTableDataSource } from '@angular/material';
+import { MatTableDataSource, MatDialog } from '@angular/material';
 import { PicService } from '../pic.service';
 import { PadiserviceService } from '../padiservice.service';
+import { FbFeeAddComponent } from '../fb-fee-add/fb-fee-add.component';
 
 @Component({
   selector: 'app-fb-edit',
@@ -22,6 +23,7 @@ export class FbEditComponent implements OnInit {
     private pic : PicService,
     private padiService : PadiserviceService,
     private route : ActivatedRoute,
+    private dialog : MatDialog,
     private datePipe: DatePipe
   ) {
     this.fb.getFb({nofb:this.route.snapshot.params.nofb},result => {
@@ -45,6 +47,11 @@ export class FbEditComponent implements OnInit {
     this.fb.updatetFb(obj, result => {
       console.log("Success update",result)
       window.location.href = '/fbs'
+    })
+  }
+  addFeeDialog(){
+    this.dialog.open(FbFeeAddComponent,{
+      width: '500px'
     })
   }
   ngOnInit() {

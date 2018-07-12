@@ -120,7 +120,7 @@
   <mat-tab label="Fees">
     <mat-toolbar>
       <mat-toolbar-row>
-          <button mat-button mat-raised-button color="gold">Fee</button>
+          <button mat-button mat-raised-button color="gold" (click)="addFeeDialog()">Add Fee</button>
       </mat-toolbar-row>
     </mat-toolbar>
     <table mat-table [dataSource]="serviceDS" class="full-width">
