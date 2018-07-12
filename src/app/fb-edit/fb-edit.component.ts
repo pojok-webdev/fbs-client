@@ -61,6 +61,12 @@ export class FbEditComponent implements OnInit {
       width: '500px'
     })
   }
+  removeFee(fee){
+    fee.nofb = this.route.snapshot.params.nofb
+    this.fee.removeFee(fee, result => {
+      console.log("Result",result)
+    })
+  }
   ngOnInit() {
   }
 

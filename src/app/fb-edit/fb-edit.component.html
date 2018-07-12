@@ -126,21 +126,22 @@
     <table mat-table [dataSource]="feeDS" class="full-width">
       <ng-container matColumnDef="category">
         <th mat-header-cell *matHeaderCellDef>Name</th>
-        <td matc-cell *matCellDef="let obj">{{obj.name}}</td>
+        <td matc-cell *matCellDef="let fee">{{fee.name}}</td>
       </ng-container>
       <ng-container matColumnDef="bandwidth">
         <th mat-header-cell *matHeaderCellDef>Dpp</th>
-        <td matc-cell *matCellDef="let obj">{{obj.dpp}}</td>
+        <td matc-cell *matCellDef="let fee">{{fee.dpp}}</td>
       </ng-container>
       <ng-container matColumnDef="ppn">
           <th mat-header-cell *matHeaderCellDef>PPn</th>
-          <td matc-cell *matCellDef="let obj">{{obj.ppn}}</td>
+          <td matc-cell *matCellDef="let fee">{{fee.ppn}}</td>
         </ng-container>
         <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef>Actions</th>
-        <td matc-cell *matCellDef="let obj">
+        <td matc-cell *matCellDef="let fee">
           <mat-select name="" placeholder="Select">
-            <mat-option routerLink="padiserviceedit">Edit</mat-option>
+            <mat-option routerLink="/feeedit">Edit</mat-option>
+            <mat-option (click)="removeFee(fee)">Remove</mat-option>
           </mat-select>
         </td>
       </ng-container>

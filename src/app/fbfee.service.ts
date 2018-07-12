@@ -62,4 +62,17 @@ fees : Observable<any[]>
       }
     )
   }
+  removeFee(obj,callback){
+    this.fee = this.http.post<any>(this.appvar.server + '/removefee',obj)
+    this.fee.subscribe(
+      data => {
+        console.log("remove fee success",data)
+        callback(data)
+      },
+      err => {
+        console.log("remove fee err", err)
+        callback(err)
+      }
+    )
+  }
 }
