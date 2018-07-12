@@ -10,8 +10,8 @@ export class FbfeeService {
   fee : Observable<any>
 fees : Observable<any[]>
   constructor(private http : HttpClient,private appvar :globalVars) { }
-  getFees(callback){
-    this.fees = this.http.get<any[]>(this.appvar.server  +'/getfees')
+  getFees(obj,callback){
+    this.fees = this.http.post<any[]>(this.appvar.server  +'/getfees',obj)
     this.fees.subscribe(
       data => {
         console.log("getFees Result",data)

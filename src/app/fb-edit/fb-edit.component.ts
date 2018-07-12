@@ -19,6 +19,8 @@ export class FbEditComponent implements OnInit {
   picsDS = new MatTableDataSource()
   serviceColumns = ['category','bandwidth','actions']
   serviceDS = new MatTableDataSource()
+  feeDS = new MatTableDataSource()
+  feeColumns = ['name','dpp','ppn','actions']
   constructor(
     private fb:FbService,
     private pic : PicService,
@@ -39,6 +41,9 @@ export class FbEditComponent implements OnInit {
     this.padiService.getServices({fb_id:this.route.snapshot.params.nofb}, result => {
       console.log("Services",result)
       this.serviceDS = new MatTableDataSource(result)
+    })
+    this.fee.getFees({nofb:this.route.snapshot.params.nofb},result => {
+      this.feeDS = new MatTableDataSource(result)
     })
   }
   updateFb(obj){

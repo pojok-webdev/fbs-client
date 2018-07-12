@@ -123,16 +123,20 @@
           <button mat-button mat-raised-button color="gold" (click)="addFeeDialog()">Add Fee</button>
       </mat-toolbar-row>
     </mat-toolbar>
-    <table mat-table [dataSource]="serviceDS" class="full-width">
+    <table mat-table [dataSource]="feeDS" class="full-width">
       <ng-container matColumnDef="category">
-        <th mat-header-cell *matHeaderCellDef>Category</th>
-        <td matc-cell *matCellDef="let obj">{{obj.category}}</td>
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td matc-cell *matCellDef="let obj">{{obj.name}}</td>
       </ng-container>
       <ng-container matColumnDef="bandwidth">
-        <th mat-header-cell *matHeaderCellDef>Bandwidth</th>
-        <td matc-cell *matCellDef="let obj">{{obj.bandwidth}}</td>
+        <th mat-header-cell *matHeaderCellDef>Dpp</th>
+        <td matc-cell *matCellDef="let obj">{{obj.dpp}}</td>
       </ng-container>
-      <ng-container matColumnDef="actions">
+      <ng-container matColumnDef="ppn">
+          <th mat-header-cell *matHeaderCellDef>PPn</th>
+          <td matc-cell *matCellDef="let obj">{{obj.ppn}}</td>
+        </ng-container>
+        <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef>Actions</th>
         <td matc-cell *matCellDef="let obj">
           <mat-select name="" placeholder="Select">
