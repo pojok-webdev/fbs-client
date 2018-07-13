@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs'
+import { AppconfService } from './appconf.service';
 @Injectable({
   providedIn: 'root'
 })
 export class PicService {
 pics : Observable<any[]>
 pic : Observable<any>
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private appconf : AppconfService) {}
   getPics(obj,callback){
-    this.pics = this.http.get<any[]>('http://localhost:2000/getpics/'+obj.nofb)
+    this.pics = this.http.get<any[]>(this.appconf.server+'/getpics/'+obj.nofb)
     this.pics.subscribe(
       data => {
         console.log("Result",data)
@@ -22,7 +23,7 @@ pic : Observable<any>
     )
   }
   getPic(obj,callback){
-    this.pic = this.http.post<any[]>('http://localhost:2000/getpic',obj)
+    this.pic = this.http.post<any[]>(this.appconf.server+'/getpic',obj)
     this.pic.subscribe(
       data => {
         console.log("Result",data[0])
@@ -35,7 +36,7 @@ pic : Observable<any>
     )
   }
   savePic(obj,callback){
-    this.pic = this.http.post<any>('http://localhost:2000/savepic',obj)
+    this.pic = this.http.post<any>(this.appconf.server+'/savepic',obj)
     this.pic.subscribe(
       data => {
         console.log(data)
@@ -48,7 +49,7 @@ pic : Observable<any>
     )
   }
   updatePic(obj,callback){
-    this.pic = this.http.post<any>('http://localhost:2000/updatepic',obj)
+    this.pic = this.http.post<any>(this.appconf.server+'/updatepic',obj)
     this.pic.subscribe(
       data => {
         console.log(data)

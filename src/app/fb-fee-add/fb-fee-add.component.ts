@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import {  MatDialogRef, MAT_DIALOG_DATA } from '@angular/material'
 import { FbfeeService } from '../fbfee.service';
 @Component({
@@ -12,18 +12,22 @@ fee = {
   dpp:0,
   ppn:0,
   client_id:127,
-  nofb:'SBY20180125000127000',
+  nofb:'',
   createuser:'anonymous'
 }
   constructor(
     public dialogRef : MatDialogRef<FbFeeAddComponent>,
-    private fbfee : FbfeeService
-  ) { }
+    private fbfee : FbfeeService,
+    @Inject(MAT_DIALOG_DATA) public data : any
+  ) {
+    this.fee.nofb = this.data.nofb
+  }
   closeDialog(){
     this.dialogRef.close()
   }
   saveFee(obj){
     console.log("Fee",obj)
+    obj.client_id = 0
     this.fbfee.saveFee(obj, result => {
       console.log("success save fee",result)
     })

@@ -11,7 +11,7 @@ padiservice : Observable<any>
 padiservices : Observable<any[]>
   constructor(private http: HttpClient,private appconf:AppconfService) {}
   getServices(obj,callback){
-    this.padiservices = this.http.get<any[]>('http://'+this.appconf.server+'/getservices/'+obj.fb_id)
+    this.padiservices = this.http.get<any[]>(this.appconf.server+'/getservices/'+obj.fb_id)
     this.padiservices.subscribe(
       data => {
         console.log("Success",data)
@@ -24,7 +24,7 @@ padiservices : Observable<any[]>
     )
   }
   getService(obj, callback){
-    this.padiservice = this.http.get<any>('http://'+this.appconf.server+'/getservice/'+obj.id)
+    this.padiservice = this.http.get<any>(this.appconf.server+'/getservice/'+obj.id)
     this.padiservice.subscribe(
       data => {
         console.log("Success",data)
@@ -37,7 +37,7 @@ padiservices : Observable<any[]>
     )
   }
   saveService(obj,callback){
-    this.padiservice = this.http.post<any[]>('http://'+this.appconf.server+'/saveservice/',obj)
+    this.padiservice = this.http.post<any[]>(this.appconf.server+'/saveservice/',obj)
     this.padiservice.subscribe(
       data => {
         console.log("Success",data)
@@ -50,7 +50,7 @@ padiservices : Observable<any[]>
     )
   }
   updateService(obj, callback){
-    this.padiservice = this.http.post<any>('http://'+this.appconf.server+'/updateservice',obj)
+    this.padiservice = this.http.post<any>(this.appconf.server+'/updateservice',obj)
     this.padiservice.subscribe(
       data => {
         console.log("Success",data)

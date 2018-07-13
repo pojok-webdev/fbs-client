@@ -4,6 +4,6 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AppconfService {
-  server = 'localhost:2000'
+  server = 'http://localhost:2000'
   constructor() { }
 }

@@ -58,7 +58,10 @@ export class FbEditComponent implements OnInit {
   }
   addFeeDialog(){
     this.dialog.open(FbFeeAddComponent,{
-      width: '500px'
+      width: '500px',
+      data: {
+        nofb:this.route.snapshot.params.nofb
+      }
     })
   }
   removeFee(fee){
