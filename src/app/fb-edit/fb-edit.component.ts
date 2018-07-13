@@ -15,6 +15,7 @@ import { FbfeeService } from '../fbfee.service';
 })
 export class FbEditComponent implements OnInit {
   obj = {} 
+  feeobj = {}
   that = this
   picsColumn : String[] = ['name','role','position','idnum','phone','hp','email','actions']
   picsDS = new MatTableDataSource()
@@ -57,11 +58,13 @@ export class FbEditComponent implements OnInit {
       window.location.href = '/fbs'
     })
   }
-  addFeeDialog(){
+  addFeeDialog(_obj){
+    console.log("Obj",_obj)
+    _obj.nofb = this.route.snapshot.params.nofb
     this.dialog.open(FbFeeAddComponent,{
       width: '500px',
       data: {
-        nofb:this.route.snapshot.params.nofb
+        obj:_obj
       }
     })
     .afterClosed()
@@ -81,6 +84,7 @@ export class FbEditComponent implements OnInit {
     fee.nofb = this.route.snapshot.params.nofb
     this.fee.removeFee(fee, result => {
       console.log("Result",result)
+      this.reloadFeeDS()
     })
   }
   ngOnInit() {

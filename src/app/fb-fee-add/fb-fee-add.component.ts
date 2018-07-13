@@ -22,7 +22,10 @@ fee = {
     private fbfee : FbfeeService,
     @Inject(MAT_DIALOG_DATA) public data : any
   ) {
-    this.fee.nofb = this.data.nofb
+    this.fee.nofb = this.data.obj.nofb
+    this.fee.dpp = this.data.obj.dpp
+    this.fee.ppn = this.data.obj.ppn
+    this.fee.name = this.data.obj.name
   }
   closeDialog(){
     this.dialogRef.close()
