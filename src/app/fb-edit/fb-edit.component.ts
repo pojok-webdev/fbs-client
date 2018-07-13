@@ -15,6 +15,7 @@ import { FbfeeService } from '../fbfee.service';
 })
 export class FbEditComponent implements OnInit {
   obj = {} 
+  that = this
   picsColumn : String[] = ['name','role','position','idnum','phone','hp','email','actions']
   picsDS = new MatTableDataSource()
   serviceColumns = ['category','bandwidth','actions']
@@ -63,6 +64,18 @@ export class FbEditComponent implements OnInit {
         nofb:this.route.snapshot.params.nofb
       }
     })
+    .afterClosed()
+    .subscribe(
+      result =>{
+        console.log("After Close",result)
+        this.reloadFeeDS()
+      }
+    )
+  }
+  reloadFeeDS(){
+    this.fee.getFees({nofb:this.route.snapshot.params.nofb}, result => {
+      this.feeDS = new MatTableDataSource(result)
+    } )
   }
   removeFee(fee){
     fee.nofb = this.route.snapshot.params.nofb

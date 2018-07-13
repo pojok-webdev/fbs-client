@@ -8,7 +8,7 @@ import { globalVars } from './globalVars';
 })
 export class FbfeeService {
   fee : Observable<any>
-fees : Observable<any[]>
+  fees : Observable<any[]>
   constructor(private http : HttpClient,private appvar :globalVars) { }
   getFees(obj,callback){
     this.fees = this.http.post<any[]>(this.appvar.server  +'/getfees',obj)
