@@ -20,6 +20,7 @@ import { PadiservicesComponent } from './padiservices/padiservices.component';
 import { PadiserviceAddComponent } from './padiservice-add/padiservice-add.component';
 import { FbFeeAddComponent } from './fb-fee-add/fb-fee-add.component';
 import { globalVars } from './globalVars';
+import { LoginComponent } from './login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +30,8 @@ import { globalVars } from './globalVars';
     PicEditComponent,
     PadiservicesComponent,
     PadiserviceAddComponent,
-    FbFeeAddComponent
+    FbFeeAddComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
