@@ -17,6 +17,7 @@ export class AuthService {
         login.token = data.token
         localStorage.setItem('login',JSON.stringify(login))
         localStorage.setItem('token',data.token)
+        window.location.href = data.defaultRoute
         },
       err => {
         console.log("Err",err)
@@ -50,5 +51,6 @@ export class AuthService {
   logout(){
     localStorage.removeItem('token')
     console.log("Logout")
+    window.location.href = "/login"
   }
 }
