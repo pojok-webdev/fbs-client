@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs'
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -9,29 +10,25 @@ import { Observable } from 'rxjs'
 })
 export class LoginComponent implements OnInit {
   login = {
-    name:'',
-    password:'',
+    name:'puji',
+    password:'najma',
     token:''
   }
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,private auth: AuthService) { }
   _login:Observable<any>
   ngOnInit() {
   }
   doLogin(){
-    this._login = this.http.post<any>('http://localhost:2000/login',this.login)
-    this._login.subscribe(
-      data => {
-        console.log("Data",data)
-        this.login.token = data.token
-        localStorage.setItem('login',JSON.stringify(this.login))
-        },
-      err => {
-        console.log("Err",err)
-      }
-    )
+    this.auth.doLogin(this.login)
   }
-  getLogin(){
-    var _login = localStorage.getItem('login')
+  getLogin(){    
+    var _login = this.auth.getLogin()
     console.log("User",_login)
+  }
+  isLogin(){
+    this.auth.isLogin()
+  }
+  logout(){
+    this.auth.logout()
   }
 }
