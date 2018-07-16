@@ -21,14 +21,4 @@ export class LoginComponent implements OnInit {
   doLogin(){
     this.auth.doLogin(this.login)
   }
-  getLogin(){    
-    var _login = this.auth.getLogin()
-    console.log("User",_login)
-  }
-  isLogin(){
-    this.auth.isLogin()
-  }
-  logout(){
-    this.auth.logout()
-  }
 }
