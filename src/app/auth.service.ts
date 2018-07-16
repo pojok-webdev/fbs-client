@@ -28,16 +28,22 @@ export class AuthService {
     console.log("User",_login)
     return _login
   }
-  isLogin(){
+  isLogin(callback){
     var token = localStorage.getItem('token')
     console.log("TOKEN",token)
     this._login = this.http.get<any>(this.appconf.server+'/islogin/'+token)
     this._login.subscribe(
       data => {
-        console.log("Data",data)
+        if(data.name==='JsonWebTokenError'){
+          callback(false)
+        }else{
+          console.log("Data",data)
+          callback(true)
+        }
       },
       err => {
         console.log("Err",err)
+        callback(false)
       }
     )
   }
