@@ -16,12 +16,13 @@ export class FbsComponent implements OnInit {
     this.auth.isLogin(result => {
       if(result){
         console.log("Anda telah Login")
+        this.fb.getFbs(result=>{
+          this.dataSource = new MatTableDataSource(result)
+        })
       }else{
         console.log("Anda belum Login")
+        window.location.href = "/login"
       }
-    })
-    this.fb.getFbs(result=>{
-      this.dataSource = new MatTableDataSource(result)
     })
   }
 
