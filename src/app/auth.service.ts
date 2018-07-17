@@ -10,15 +10,20 @@ export class AuthService {
   constructor(private http : HttpClient,private appconf : AppconfService) { }
 
   doLogin(login){
-    this._login = this.http.post<any>(this.appconf.server+'/login',login)
+    console.log("login invoked")
+    this._login = this.http.post<any>(this.appconf.server+'/testlogin',login)
     this._login.subscribe(
       data => {
         console.log("Data",data)
         login.token = data.token
         localStorage.setItem('login',JSON.stringify(login))
         localStorage.setItem('token',data.token)
-        window.location.href = data.defaultRoute
-        },
+        if(data.message === "auth error"){
+          console.log("Message",data.message)
+        }else{
+          window.location.href = data.defaultRoute
+        }
+      },
       err => {
         console.log("Err",err)
       }

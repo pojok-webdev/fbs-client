@@ -11,6 +11,7 @@ import { AuthService } from '../auth.service';
 export class LoginComponent implements OnInit {
   login = {
     name:'puji',
+    email:'puji@padi.net.id',
     password:'najma',
     token:''
   }
