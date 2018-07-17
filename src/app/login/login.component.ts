@@ -21,8 +21,9 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
   doLogin(){
-    this.auth.doLogin(this.login,result => {
+    this.auth.doLogin(this.login,(result,msg) => {
       if(!result){
+        console.log("Message",msg)
         this.authenticated = false
       }else{
         window.location.href = '/fbs'

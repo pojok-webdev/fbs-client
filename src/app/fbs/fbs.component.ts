@@ -13,14 +13,14 @@ export class FbsComponent implements OnInit {
   dataSource = new MatTableDataSource(this.fbs)
   displayedColumns = ['name','nofb','siup','npwp','sppkp','address','city','period1','period2','actions']
   constructor(private fb: FbService,private auth:AuthService) {
-    this.auth.isLogin(result => {
+    this.auth.isLogin((result,msg) => {
       if(result){
-        console.log("Anda telah Login")
+        console.log("Anda telah Login",msg)
         this.fb.getFbs(result=>{
           this.dataSource = new MatTableDataSource(result)
         })
       }else{
-        console.log("Anda belum Login")
+        console.log("Error Login",msg)
         window.location.href = "/login"
       }
     })

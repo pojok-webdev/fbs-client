@@ -19,13 +19,13 @@ export class AuthService {
         localStorage.setItem('token',data.token)
         if(data.message === "auth error"){
           console.log("Message",data.message)
-          callback(false)
+          callback(false,"Auth Error")
         }else{
-          callback(true)
+          callback(true,"ok")
         }
       },
       err => {
-        callback(false)
+        callback(false,"Server Error")
         console.log("Err",err)
       }
     )
@@ -41,16 +41,21 @@ export class AuthService {
     this._login = this.http.get<any>(this.appconf.server+'/islogin/'+token)
     this._login.subscribe(
       data => {
-        if(data.name==='JsonWebTokenError'){
-          callback(false)
-        }else{
+        switch(data.name){
+          case 'JsonWebTokenError':
+          callback(false,"Token Error")
+          break;
+          case 'TokenExpiredError':
+          callback(false,"Token Expired")
+          break
+          default:
           console.log("Data",data)
-          callback(true)
+          callback(true,"ok")
         }
       },
       err => {
         console.log("Err",err)
-        callback(false)
+        callback(false,"Server Error")
       }
     )
   }
