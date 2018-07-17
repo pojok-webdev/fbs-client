@@ -9,8 +9,7 @@ export class AuthService {
   _login
   constructor(private http : HttpClient,private appconf : AppconfService) { }
 
-  doLogin(login){
-    console.log("login invoked")
+  doLogin(login,callback){
     this._login = this.http.post<any>(this.appconf.server+'/testlogin',login)
     this._login.subscribe(
       data => {
@@ -20,11 +19,13 @@ export class AuthService {
         localStorage.setItem('token',data.token)
         if(data.message === "auth error"){
           console.log("Message",data.message)
+          callback(false)
         }else{
-          window.location.href = data.defaultRoute
+          callback(true)
         }
       },
       err => {
+        callback(false)
         console.log("Err",err)
       }
     )
@@ -55,7 +56,6 @@ export class AuthService {
   }
   logout(){
     localStorage.removeItem('token')
-    console.log("Logout")
     window.location.href = "/login"
   }
 }

@@ -15,11 +15,18 @@ export class LoginComponent implements OnInit {
     password:'najma',
     token:''
   }
+  authenticated = true
   constructor(private http:HttpClient,private auth: AuthService) { }
   _login:Observable<any>
   ngOnInit() {
   }
   doLogin(){
-    this.auth.doLogin(this.login)
+    this.auth.doLogin(this.login,result => {
+      if(!result){
+        this.authenticated = false
+      }else{
+        window.location.href = '/fbs'
+      }
+    })
   }
 }
