@@ -1,11 +1,25 @@
-<button mat-button [matMenuTriggerFor]="menu">Menu</button>
-<mat-menu #menu="matMenu">
-  <button mat-menu-item [matMenuTriggerFor]="fbs">Fbs</button>
-  <button mat-menu-item routerLink="/login">Login</button>
+<mat-toolbar>
+  <span>
+    <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item [matMenuTriggerFor]="fbs">Fbs</button>
+      <button mat-menu-item routerLink="/login">Login</button>
+      <button mat-menu-item (click)="logout()">Logout</button>
+    </mat-menu>
+    <mat-menu #fbs="matMenu">
+      <button mat-menu-item routerLink="/fbs">Show Fbs</button>
+      <button mat-menu-item routerLink="/fbadd">Add Fbs</button>
+    </mat-menu>
+  </span>
+  <span class="fill-empty-space"></span>
+  <span>
+    <mat-icon svgIcon="userprofile" [matMenuTriggerFor]="userprofile"></mat-icon>
+  </span>
+</mat-toolbar>
+
+<mat-menu #userprofile="matMenu">
+  <button mat-menu-item routerLink="/userprofile">Profile</button>
   <button mat-menu-item (click)="logout()">Logout</button>
 </mat-menu>
-<mat-menu #fbs="matMenu">
-  <button mat-menu-item routerLink="/fbs">Show Fbs</button>
-  <button mat-menu-item routerLink="/fbadd">Add Fbs</button>
-</mat-menu>
+
 <router-outlet></router-outlet>
