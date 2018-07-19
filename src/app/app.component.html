@@ -3,8 +3,6 @@
     <button mat-button [matMenuTriggerFor]="menu">Menu</button>
     <mat-menu #menu="matMenu">
       <button mat-menu-item [matMenuTriggerFor]="fbs">Fbs</button>
-      <button mat-menu-item routerLink="/login">Login</button>
-      <button mat-menu-item (click)="logout()">Logout</button>
     </mat-menu>
     <mat-menu #fbs="matMenu">
       <button mat-menu-item routerLink="/fbs">Show Fbs</button>
@@ -19,6 +17,7 @@
 
 <mat-menu #userprofile="matMenu">
   <button mat-menu-item routerLink="/userprofile">Profile</button>
+  <button mat-menu-item (click)='changePassword()'>Change Password</button>
   <button mat-menu-item (click)="logout()">Logout</button>
 </mat-menu>
 

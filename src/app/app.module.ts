@@ -22,6 +22,8 @@ import { FbFeeAddComponent } from './fb-fee-add/fb-fee-add.component';
 import { globalVars } from './globalVars';
 import { LoginComponent } from './login/login.component';
 import { FbAddComponent } from './fb-add/fb-add.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { UserChangepasswordComponent } from './user-changepassword/user-changepassword.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +35,9 @@ import { FbAddComponent } from './fb-add/fb-add.component';
     PadiserviceAddComponent,
     FbFeeAddComponent,
     LoginComponent,
-    FbAddComponent
+    FbAddComponent,
+    UserProfileComponent,
+    UserChangepasswordComponent
   ],
   imports: [
     BrowserModule,

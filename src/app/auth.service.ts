@@ -10,13 +10,21 @@ export class AuthService {
   constructor(private http : HttpClient,private appconf : AppconfService) { }
 
   doLogin(login,callback){
-    this._login = this.http.post<any>(this.appconf.server+'/testlogin',login)
+    this._login = this.http.post<any>(this.appconf.server+'/login',login)
     this._login.subscribe(
       data => {
         console.log("Data",data)
         login.token = data.token
         localStorage.setItem('login',JSON.stringify(login))
+        localStorage.setItem('username',login.name)
+        localStorage.setItem('email',login.email)
         localStorage.setItem('token',data.token)
+
+
+        console.log('Login',localStorage.getItem('username'))
+        console.log('Email',localStorage.getItem('email'))
+        console.log('Token',localStorage.getItem('token'))
+
         if(data.message === "auth error"){
           console.log("Message",data.message)
           callback(false,"Auth Error")
@@ -43,19 +51,34 @@ export class AuthService {
       data => {
         switch(data.name){
           case 'JsonWebTokenError':
-          callback(false,"Token Error")
+            callback(false,"Token Error")
           break;
           case 'TokenExpiredError':
-          callback(false,"Token Expired")
+            callback(false,"Token Expired")
           break
           default:
-          console.log("Data",data)
-          callback(true,"ok")
+            console.log('Login',localStorage.getItem('username'))
+            console.log('Email',localStorage.getItem('email'))
+            console.log("Data",data)
+            callback(true,"ok")
         }
       },
       err => {
-        console.log("Err",err)
+        console.log("Verify Err",err)
         callback(false,"Server Error")
+      }
+    )
+  }
+  changePassword(obj,callback){
+    this._login = this.http.post<any>(this.appconf.server+'/changepassword',obj)
+    this._login.subscribe(
+      data => {
+        console.log("change password",data)
+        callback(data)
+      },
+      err => {
+        console.log("Err",err)
+        callback(err)
       }
     )
   }

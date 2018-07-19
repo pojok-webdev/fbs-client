@@ -8,6 +8,8 @@ import { PicEditComponent } from '../pic-edit/pic-edit.component';
 import { PadiservicesComponent } from '../padiservices/padiservices.component';
 import { LoginComponent } from '../login/login.component';
 import { FbAddComponent } from '../fb-add/fb-add.component';
+import { UserProfileComponent } from '../user-profile/user-profile.component'
+import { UserChangepasswordComponent } from '../user-changepassword/user-changepassword.component';
 
 const routes: Routes = [
   {path:'fbs',component: FbsComponent},
@@ -16,7 +18,9 @@ const routes: Routes = [
   {path:'picedit/:nofb/:role',component:PicEditComponent},
   {path:'padiservices/:fb_id',component:PadiservicesComponent},
   {path:'login',component:LoginComponent},
-  {path:'fbadd',component:FbAddComponent}
+  {path:'fbadd',component:FbAddComponent},
+  {path:'userprofile',component:UserProfileComponent},
+  {path:'userchangepassword',component:UserChangepasswordComponent}
 ]
 @NgModule({
   imports: [
