@@ -1,12 +1,14 @@
 <mat-toolbar>
   <span>
-    <button mat-button [matMenuTriggerFor]="menu">Menu</button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item [matMenuTriggerFor]="fbs">Fbs</button>
-    </mat-menu>
+    <button mat-button [matMenuTriggerFor]="clients">Clients</button>
+    <button mat-button [matMenuTriggerFor]="fbs">Fbs</button>
     <mat-menu #fbs="matMenu">
       <button mat-menu-item routerLink="/fbs">Show Fbs</button>
-      <button mat-menu-item routerLink="/fbadd">Add Fbs</button>
+      <button mat-menu-item routerLink="/fbadd">Add Fb</button>
+    </mat-menu>
+    <mat-menu #clients="matMenu">
+      <button mat-menu-item routerLink='/clients'>Show Clients</button>
+      <button mat-menu-item>Add Client</button>
     </mat-menu>
   </span>
   <span class="fill-empty-space"></span>

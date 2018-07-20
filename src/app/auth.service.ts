@@ -70,6 +70,9 @@ export class AuthService {
     )
   }
   changePassword(obj,callback){
+
+    //curl -d "email=puji@padi.net.id&name=puji&newpassword=puji&password=puji" -X POST http://localhost:2000/changepassword
+    console.log("OBJ",obj)
     this._login = this.http.post<any>(this.appconf.server+'/changepassword',obj)
     this._login.subscribe(
       data => {

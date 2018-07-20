@@ -9,7 +9,7 @@ import { AppRouteModule } from './app-route/app-route.module';
 import { HttpClientModule } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
 import { CdkTableModule } from '@angular/cdk/table';
-import { MatMenuModule, MatSelectModule, MatInputModule, MatDatepickerModule, MatNativeDateModule, MatDividerModule, MatButtonModule, MatTabsModule, MatToolbarModule, MatDialogModule, MatIconModule } from '@angular/material';
+import { MatMenuModule, MatSelectModule, MatInputModule, MatDatepickerModule, MatNativeDateModule, MatDividerModule, MatButtonModule, MatTabsModule, MatToolbarModule, MatDialogModule, MatIconModule, MatPaginatorModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FbEditComponent } from './fb-edit/fb-edit.component'
 import { DatePipe } from '@angular/common';
@@ -24,6 +24,8 @@ import { LoginComponent } from './login/login.component';
 import { FbAddComponent } from './fb-add/fb-add.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UserChangepasswordComponent } from './user-changepassword/user-changepassword.component';
+import { ClientsComponent } from './clients/clients.component';
+import { ClientAddComponent } from './client-add/client-add.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +39,9 @@ import { UserChangepasswordComponent } from './user-changepassword/user-changepa
     LoginComponent,
     FbAddComponent,
     UserProfileComponent,
-    UserChangepasswordComponent
+    UserChangepasswordComponent,
+    ClientsComponent,
+    ClientAddComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +62,8 @@ import { UserChangepasswordComponent } from './user-changepassword/user-changepa
     MatToolbarModule,
     MatDialogModule,
     FormsModule,
-    MatIconModule
+    MatIconModule,
+    MatPaginatorModule
   ],
   providers: [
     DatePipe,

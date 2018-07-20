@@ -10,6 +10,8 @@ import { LoginComponent } from '../login/login.component';
 import { FbAddComponent } from '../fb-add/fb-add.component';
 import { UserProfileComponent } from '../user-profile/user-profile.component'
 import { UserChangepasswordComponent } from '../user-changepassword/user-changepassword.component';
+import { ClientsComponent } from '../clients/clients.component';
+import { ClientAddComponent } from '../client-add/client-add.component';
 
 const routes: Routes = [
   {path:'fbs',component: FbsComponent},
@@ -20,7 +22,9 @@ const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'fbadd',component:FbAddComponent},
   {path:'userprofile',component:UserProfileComponent},
-  {path:'userchangepassword',component:UserChangepasswordComponent}
+  {path:'userchangepassword',component:UserChangepasswordComponent},
+  {path:'clients',component:ClientsComponent},
+  {path:'clientadd',component:ClientAddComponent}
 ]
 @NgModule({
   imports: [
