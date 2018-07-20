@@ -44,6 +44,28 @@ export class ClientService {
       }
     )
   }
+  searchClient(obj,callback){
+    this.clients = this.http.post<any[]>(this.appconf.server+'/searchclient',obj)
+    this.clients.subscribe(
+      data => {
+        callback(data)
+      },
+      err => {
+        callback(err)
+      }
+    )
+  }
+  searchClientLength(obj,callback){
+    this.client = this.http.post<any>(this.appconf.server+'/searchclientlength',obj)
+    this.client.subscribe(
+      data => {
+        callback(data[0].cnt)
+      },
+      err => {
+        callback(err)
+      }
+    )
+  }
   saveClient(obj,callback){
     this.client = this.http.post<any>(this.appconf.server+'/saveclient',obj)
     this.client.subscribe(
