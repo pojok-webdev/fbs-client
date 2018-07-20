@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { MatDialogRef } from '@angular/material';
 
 @Component({
   selector: 'app-user-changepassword',
@@ -8,7 +9,7 @@ import { AuthService } from '../auth.service';
 })
 export class UserChangepasswordComponent implements OnInit {
 
-  constructor(private auth:AuthService) { }
+  constructor(private auth:AuthService,private dialog : MatDialogRef<UserChangepasswordComponent>) { }
   user = {
     email:'',
     newpassword:''
@@ -19,6 +20,7 @@ export class UserChangepasswordComponent implements OnInit {
     this.user.email = localStorage.getItem('email')
     this.auth.changePassword(this.user,result => {
       console.log("Change Password Result",result)
+      this.dialog.close()
     })
   }
 }
