@@ -1,7 +1,7 @@
 <mat-form-field>
-  <input type="text" matInput [(ngModel)]="search" placeholder="Type Client Name">
+  <input type="text" matInput [(ngModel)]="searchdata" (keydown)="doSearch($event.key)" placeholder="Type Client Name">
 </mat-form-field>
-<button mat-button (click)="clientSearch(search)">Search</button>
+<button mat-button (click)="clientSearch(searchdata)">Search</button>
 <table mat-table [dataSource]="objs" class='full-width'>
   <ng-container matColumnDef='id'>
     <th mat-header-cell *matHeaderCellDef>ID</th>
@@ -28,7 +28,8 @@
     <td mat-cell *matCellDef='let obj'>
       <mat-select placeholder="Select Action">
         <mat-option>Edit</mat-option>
-        <mat-option>FB</mat-option>
+        <mat-option routerLink='/fbs/{{obj.id}}/0/10'>List FBs</mat-option>
+        <mat-option routerLink='/fbadd/{{obj.id}}'>Add FB</mat-option>
       </mat-select>
     </td>
   </ng-container>

@@ -93,7 +93,7 @@
   <mat-tab label="Services">
     <mat-toolbar>
       <mat-toolbar-row>
-          <button mat-button mat-raised-button color="gold">Add Service</button>
+          <button mat-button mat-raised-button color="gold" (click)="addServiceDialog(obj)">Add Service</button>
       </mat-toolbar-row>
     </mat-toolbar>
     <table mat-table [dataSource]="serviceDS" class="full-width">

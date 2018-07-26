@@ -7,6 +7,7 @@ import { PicService } from '../pic.service';
 import { PadiserviceService } from '../padiservice.service';
 import { FbFeeAddComponent } from '../fb-fee-add/fb-fee-add.component';
 import { FbfeeService } from '../fbfee.service';
+import { FbServiceAddComponent } from '../fb-service-add/fb-service-add.component';
 
 @Component({
   selector: 'app-fb-edit',
@@ -14,7 +15,9 @@ import { FbfeeService } from '../fbfee.service';
   styleUrls: ['./fb-edit.component.css']
 })
 export class FbEditComponent implements OnInit {
-  obj = {} 
+  obj = {
+    client_id:''
+  } 
   feeobj = {}
   that = this
   picsColumn : String[] = ['name','role','position','idnum','phone','hp','email','actions']
@@ -53,9 +56,9 @@ export class FbEditComponent implements OnInit {
     obj.period1 = this.datePipe.transform(obj.period1,'yyy-MM-dd').toString()
     obj.period2 = this.datePipe.transform(obj.period2,'yyy-MM-dd')
     obj.activationdate = this.datePipe.transform(obj.activationdate,'yyy-MM-dd')
-    this.fb.updatetFb(obj, result => {
+    this.fb.updateFb(obj, result => {
       console.log("Success update",result)
-      window.location.href = '/fbs'
+      window.location.href = '/fbs/'+this.obj.client_id+'/0/10'
     })
   }
   addFeeDialog(_obj){
@@ -85,6 +88,24 @@ export class FbEditComponent implements OnInit {
     this.fee.removeFee(fee, result => {
       console.log("Result",result)
       this.reloadFeeDS()
+    })
+  }
+  addServiceDialog(_obj){
+    _obj.nofb = this.route.snapshot.params.nofb
+    this.dialog.open(FbServiceAddComponent,{
+      width: '500px',
+      data:{obj:_obj}
+    })
+    .afterClosed()
+    .subscribe(
+      data => {
+        this.reloadServiceDS()
+      }
+    )
+  }
+  reloadServiceDS(){
+    this.padiService.getServices({nofb:this.route.snapshot.params.nofb}, result => {
+      this.serviceDS = new MatTableDataSource(result)
     })
   }
   ngOnInit() {

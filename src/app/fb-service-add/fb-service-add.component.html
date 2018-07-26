@@ -1,0 +1,125 @@
+<mat-form-field class="full-width">
+  <mat-select placeholder="Choose Service" [(ngModel)]="clientservice">
+    <mat-option value="Enterprise">Enterprise</mat-option>
+    <mat-option value="Business">Business</mat-option>
+    <mat-option value="Web+Applications">Web+Applications</mat-option>
+    <mat-option value="Colocation">Colocation</mat-option>
+    <mat-option value="IIX">IIX</mat-option>
+    <mat-option value="Local Loop">Local Loop</mat-option>
+    <mat-option value="Symetrical Broadband Internet (SBI)">Symetrical Broadband Internet (SBI)</mat-option>
+    <mat-option value="Hosting & Domains">Hosting & Domains</mat-option>
+    <mat-option value="Mix">Mix</mat-option>
+    <mat-option value="Others (Wifi, ADSL)">Others (Wifi, ADSL)</mat-option>
+    <mat-option value="Proyek">Proyek</mat-option>
+    <mat-option value="Perangkat">Perangkat</mat-option>
+    <mat-option value="Setup & Instalasi">Setup & Instalasi</mat-option>
+    <mat-option value="Oryza">Oryza</mat-option>
+    <mat-option value="Padi Cluster">Padi Cluster</mat-option>
+    <mat-option value="Custom">Custom</mat-option>
+  </mat-select>
+</mat-form-field>
+<mat-form-field class="half-width" *ngIf="clientservice==='Enterprise'">
+  <mat-select placeholder="Mbps Up">
+    <mat-option *ngFor="let i of enterprisesUpM" value="{{i}}">{{i}}</mat-option>
+  </mat-select>
+</mat-form-field>
+<mat-form-field class="half-width" *ngIf="clientservice==='Enterprise'">
+  <mat-select placeholder="Kbps Up">
+    <mat-option *ngFor="let i of enterprisesUpK" value="{{i}}">{{i}}</mat-option>
+  </mat-select>
+</mat-form-field>
+<mat-form-field class="half-width" *ngIf="clientservice==='Enterprise'">
+  <mat-select placeholder="Mbps Down">
+    <mat-option *ngFor="let i of enterprisesDownM" value="{{i}}">{{i}}</mat-option>
+  </mat-select>
+</mat-form-field>
+<mat-form-field class="half-width" *ngIf="clientservice==='Enterprise'">
+  <mat-select placeholder="Kbps Down">
+    <mat-option *ngFor="let i of enterprisesDownK" value="{{i}}">{{i}}</mat-option>
+  </mat-select>
+</mat-form-field>
+<mat-form-field *ngIf="clientservice==='Business'">
+  <mat-select placeholder='Business Vals (Mbps)'>
+    <mat-option *ngFor='let i of businessVals' value="{{i}}">{{i}}</mat-option>
+  </mat-select>
+</mat-form-field>
+<mat-form-field *ngIf="clientservice==='Colocation'" class="half-width">
+  <mat-select placeholder='Space'>
+    <mat-option *ngFor='let i of colocation.space' value="{{i}}">{{i}}</mat-option>
+  </mat-select>
+</mat-form-field>
+<mat-form-field *ngIf="clientservice==='Colocation'" class="half-width">
+  <mat-select placeholder='Bandwidth' [(ngModel)]="colocation_model">
+    <mat-option *ngFor='let i of colocation.bw' value="{{i}}">{{i}}</mat-option>
+  </mat-select>
+</mat-form-field>
+<mat-form-field *ngIf="colocation_model==='Custom'" class="half-width">
+  <mat-select placeholder='Mbps Up'>
+    <mat-option *ngFor='let i of colocation_custom.UpM' value="{{i}}">{{i}}</mat-option>
+  </mat-select>
+</mat-form-field>
+<mat-form-field *ngIf="colocation_model==='Custom'" class="half-width">
+  <mat-select placeholder='Kbps Up'>
+    <mat-option *ngFor='let i of colocation_custom.UpK' value="{{i}}">{{i}}</mat-option>
+  </mat-select>
+</mat-form-field>
+
+
+<mat-form-field *ngIf="colocation_model==='Custom'" class="half-width">
+  <mat-select placeholder='Mbps Down'>
+    <mat-option *ngFor='let i of colocation_custom.DnM' value="{{i}}">{{i}}</mat-option>
+  </mat-select>
+</mat-form-field>
+<mat-form-field *ngIf="colocation_model==='Custom'" class="half-width">
+  <mat-select placeholder='Kbps Down'>
+    <mat-option *ngFor='let i of colocation_custom.DnK' value="{{i}}">{{i}}</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field *ngIf="clientservice==='IIX'" class="half-width">
+  <mat-select placeholder='Mbps Up'>
+    <mat-option *ngFor='let i of colocation_custom.UpM' value="{{i}}">{{i}}</mat-option>
+  </mat-select>
+</mat-form-field>
+<mat-form-field *ngIf="clientservice==='IIX'" class="half-width">
+  <mat-select placeholder='Kbps Up'>
+    <mat-option *ngFor='let i of colocation_custom.UpK' value="{{i}}">{{i}}</mat-option>
+  </mat-select>
+</mat-form-field>
+<mat-form-field *ngIf="clientservice==='IIX'" class="half-width">
+  <mat-select placeholder='Mbps Down'>
+    <mat-option *ngFor='let i of colocation_custom.DnM' value="{{i}}">{{i}}</mat-option>
+  </mat-select>
+</mat-form-field>
+<mat-form-field *ngIf="clientservice==='IIX'" class="half-width">
+  <mat-select placeholder='Kbps Down'>
+    <mat-option *ngFor='let i of colocation_custom.DnK' value="{{i}}">{{i}}</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field *ngIf="clientservice==='Local Loop'" class="half-width">
+  <mat-select placeholder='Mbps Up'>
+    <mat-option *ngFor='let i of colocation_custom.UpM' value="{{i}}">{{i}}</mat-option>
+  </mat-select>
+</mat-form-field>
+<mat-form-field *ngIf="clientservice==='Local Loop'" class="half-width">
+  <mat-select placeholder='Kbps Up'>
+    <mat-option *ngFor='let i of colocation_custom.UpK' value="{{i}}">{{i}}</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field *ngIf="clientservice==='Symetrical Broadband Internet (SBI)'" class="half-width">
+  <mat-select placeholder='Value'>
+    <mat-option *ngFor='let i of sbi' value="{{i}}">{{i}}</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field *ngIf="clientservice==='Padi Cluster'" class="half-width">
+  <mat-select placeholder='Value'>
+    <mat-option *ngFor='let i of padicluster' value="{{i}}">{{i}}</mat-option>
+  </mat-select>
+</mat-form-field>
+<mat-form-field class="full-width">
+  <textarea name="" id="" cols="30" rows="10" matInput placeholder="Custom Service"></textarea>
+</mat-form-field>
+<button mat-button (click)="doSaveService()">Save</button>

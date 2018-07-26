@@ -1,3 +1,46 @@
-<p>
-  fb-add works!
-</p>
+<h1>Add FB</h1>  
+<mat-tab-group>
+  <mat-tab label="FB">
+      <mat-toolbar>
+          <mat-toolbar-row>
+            <button mat-button mat-raised-button color="accent" (click)="saveFb(obj)">Save</button>
+          </mat-toolbar-row>
+      </mat-toolbar>  
+    <mat-form-field class="full-width">
+      <input type="text" matInput placeholder="Name" [(ngModel)]="obj.name" [ngModelOptions]="{standalone:true}">
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input type="text" matInput placeholder="No. FB" [(ngModel)]="obj.nofb" [ngModelOptions]="{standalone:true}">
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input type="text" matInput placeholder="SIUP" [(ngModel)]="obj.siup" [ngModelOptions]="{standalone:true}">
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input type="text" matInput placeholder="NPWP" [(ngModel)]="obj.npwp" [ngModelOptions]="{standalone:true}">
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input type="text" matInput placeholder="SPPKP" [(ngModel)]="obj.sppkp" [ngModelOptions]="{standalone:true}">
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input type="text" matInput placeholder="Address" [(ngModel)]="obj.address" [ngModelOptions]="{standalone:true}">
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input type="text" matInput placeholder="City" [(ngModel)]="obj.city" [ngModelOptions]="{standalone:true}">
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input type="text" matInput [matDatepicker]="activationdate" placeholder="Activation Date" [(ngModel)]="obj.activationdate" [ngModelOptions]="{standalone:true}">
+      <mat-datepicker-toggle matSuffix [for]="activationdate"></mat-datepicker-toggle>
+      <mat-datepicker #activationdate></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input type="text" matInput [matDatepicker]="period1" placeholder="Period 1" [(ngModel)]="obj.period1" [ngModelOptions]="{standalone:true}">
+      <mat-datepicker-toggle matSuffix [for]="period1"></mat-datepicker-toggle>
+      <mat-datepicker #period1></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input type="text" matInput [matDatepicker]="period2" placeholder="Period 2" [(ngModel)]="obj.period2" [ngModelOptions]="{standalone:true}">
+      <mat-datepicker-toggle matSuffix [for]="period2"></mat-datepicker-toggle>
+      <mat-datepicker #period2></mat-datepicker>
+    </mat-form-field>      
+  </mat-tab>
+</mat-tab-group>

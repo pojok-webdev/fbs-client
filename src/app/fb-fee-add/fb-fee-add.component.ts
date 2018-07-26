@@ -35,10 +35,12 @@ fee = {
     obj.client_id = 0
     this.fbfee.saveFee(obj, result => {
       console.log("success save fee",result)
+      this.dialogRef.close()
     })
-    this.dialogRef.close()
   }
   ngOnInit() {
   }
-
+  updatePpn(){
+    this.fee.ppn = (this.fee.dpp/10)
+  }
 }

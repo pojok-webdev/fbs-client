@@ -15,6 +15,7 @@ export class ClientsComponent implements OnInit {
   objColumns = ['id','name','fbcount','alias','address','actions']
   curPageSize=10
   curIndex=0
+  searchdata = ''
   pageEvent : PageEvent
   constructor(private client : ClientService) {
     this.client.getClients({segment:this.pageSize,offset:0},result => {
@@ -51,5 +52,11 @@ export class ClientsComponent implements OnInit {
       console.log("Amount",result)
       this.length = result
     })
+  }
+  doSearch(key){
+    console.log("Key",key)
+    if (key==="Enter"){
+      this.clientSearch(this.searchdata)
+    }
   }
 }

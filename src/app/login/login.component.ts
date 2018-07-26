@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
         console.log("Message",msg)
         this.authenticated = false
       }else{
-        window.location.href = '/fbs'
+        window.location.href = '/'
       }
     })
   }

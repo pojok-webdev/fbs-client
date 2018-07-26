@@ -50,3 +50,9 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row;columns: displayedColumns"></tr>
 </table>
+<mat-paginator 
+[length]="fbcount"
+[pageSize]="fbPageSize"
+[pageSizeOptions]="fbPageSizeOptions"
+(page)="reloadData($event)"
+></mat-paginator>

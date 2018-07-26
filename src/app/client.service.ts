@@ -37,7 +37,7 @@ export class ClientService {
     this.client = this.http.get<any>(this.appconf.server+'/getclient/'+obj.id)
     this.client.subscribe(
       data => {
-        callback(data)
+        callback(data[0])
       },
       err => {
         callback(err)

@@ -14,13 +14,13 @@ import { ClientsComponent } from '../clients/clients.component';
 import { ClientAddComponent } from '../client-add/client-add.component';
 
 const routes: Routes = [
-  {path:'fbs',component: FbsComponent},
+  {path:'fbs/:client_id/:pageIndex/:pageSize',component: FbsComponent},
   {path:'fbedit/:nofb',component: FbEditComponent},
   {path:'pics/:nofb',component:PicsComponent},
   {path:'picedit/:nofb/:role',component:PicEditComponent},
   {path:'padiservices/:fb_id',component:PadiservicesComponent},
   {path:'login',component:LoginComponent},
-  {path:'fbadd',component:FbAddComponent},
+  {path:'fbadd/:client_id',component:FbAddComponent},
   {path:'userprofile',component:UserProfileComponent},
   {path:'userchangepassword',component:UserChangepasswordComponent},
   {path:'clients',component:ClientsComponent},

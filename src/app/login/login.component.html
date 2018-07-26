@@ -1,9 +1,9 @@
 <mat-form-field class="full-width">
-  <input type="text" matInput placeholder="Email" [(ngModel)]="login.email">
+  <input type="text" matInput placeholder="Email"  [(ngModel)]="login.email">
 </mat-form-field>
 
 <mat-form-field class="full-width">
-  <input type="password" matInput placeholder="Password" [(ngModel)]="login.password">
+  <input type="password" matInput placeholder="Password" (keydown)='doLogin()' [(ngModel)]="login.password">
 </mat-form-field>
 
 <button mat-button (click)="doLogin()">Login</button>
