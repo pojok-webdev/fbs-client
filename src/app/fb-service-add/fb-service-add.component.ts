@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { PadiserviceService } from '../padiservice.service';
-import { MAT_DIALOG_DATA } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 
 @Component({
   selector: 'app-fb-service-add',
@@ -26,7 +26,8 @@ export class FbServiceAddComponent implements OnInit {
   }
   constructor(
     private padiservice:PadiserviceService,
-    @Inject (MAT_DIALOG_DATA) public data:any
+    @Inject (MAT_DIALOG_DATA) public data:any,
+    private dialog : MatDialogRef<any>
   ) {
     console.log("No FB",this.data)
     this.obj.fb_id = this.data.obj.nofb
@@ -83,6 +84,7 @@ export class FbServiceAddComponent implements OnInit {
     console.log("Service choosed",this.obj)
     this.padiservice.saveService(this.obj, result => {
       console.log("Save Service",result)
+      this.dialog.close()
     })
   }
 }

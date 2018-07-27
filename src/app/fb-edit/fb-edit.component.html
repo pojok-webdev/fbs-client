@@ -101,6 +101,17 @@
         <th mat-header-cell *matHeaderCellDef>Category</th>
         <td matc-cell *matCellDef="let obj">{{obj.category}}</td>
       </ng-container>
+      <ng-container matColumnDef="upstr">
+        <th mat-header-cell *matHeaderCellDef>Upload</th>
+        <td matc-cell *matCellDef="let obj">{{obj.upstr}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="dnstr">
+        <th mat-header-cell *matHeaderCellDef>Download</th>
+        <td matc-cell *matCellDef="let obj">{{obj.dnstr}}</td>
+      </ng-container>
+
+
       <ng-container matColumnDef="bandwidth">
         <th mat-header-cell *matHeaderCellDef>Bandwidth</th>
         <td matc-cell *matCellDef="let obj">{{obj.bandwidth}}</td>
@@ -124,11 +135,11 @@
       </mat-toolbar-row>
     </mat-toolbar>
     <table mat-table [dataSource]="feeDS" class="full-width">
-      <ng-container matColumnDef="category">
+      <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef>Name</th>
         <td matc-cell *matCellDef="let fee">{{fee.name}}</td>
       </ng-container>
-      <ng-container matColumnDef="bandwidth">
+      <ng-container matColumnDef="dpp">
         <th mat-header-cell *matHeaderCellDef>Dpp</th>
         <td matc-cell *matCellDef="let fee">{{fee.dpp}}</td>
       </ng-container>
@@ -145,8 +156,8 @@
           </mat-select>
         </td>
       </ng-container>
-      <tr mat-header-row *matHeaderRowDef="serviceColumns"></tr>
-      <tr mat-row *matRowDef="let rows;columns: serviceColumns"></tr>
+      <tr mat-header-row *matHeaderRowDef="feeColumns"></tr>
+      <tr mat-row *matRowDef="let rows;columns: feeColumns"></tr>
     </table>
   </mat-tab>
 </mat-tab-group>

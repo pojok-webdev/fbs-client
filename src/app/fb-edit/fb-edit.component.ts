@@ -16,16 +16,21 @@ import { FbServiceAddComponent } from '../fb-service-add/fb-service-add.componen
 })
 export class FbEditComponent implements OnInit {
   obj = {
-    client_id:''
+    client_id:'',
+    upstr:'',
+    dnstr:''
   } 
   feeobj = {}
   that = this
   picsColumn : String[] = ['name','role','position','idnum','phone','hp','email','actions']
   picsDS = new MatTableDataSource()
-  serviceColumns = ['category','bandwidth','actions']
+  serviceColumns : String[] = ['category','upstr','dnstr','bandwidth','actions']
   serviceDS = new MatTableDataSource()
   feeDS = new MatTableDataSource()
-  feeColumns = ['name','dpp','ppn','actions']
+  feeColumns : String[] = ['name','dpp','ppn','actions']
+  fee = {
+    name:''
+  }
   constructor(
     private fb:FbService,
     private pic : PicService,
@@ -33,7 +38,7 @@ export class FbEditComponent implements OnInit {
     private route : ActivatedRoute,
     private dialog : MatDialog,
     private datePipe: DatePipe,
-    private fee:FbfeeService
+    private _fee:FbfeeService
   ) {
     this.fb.getFb({nofb:this.route.snapshot.params.nofb},result => {
       console.log("selected FB",result)
@@ -47,7 +52,8 @@ export class FbEditComponent implements OnInit {
       console.log("Services",result)
       this.serviceDS = new MatTableDataSource(result)
     })
-    this.fee.getFees({nofb:this.route.snapshot.params.nofb},result => {
+    this._fee.getFees({nofb:this.route.snapshot.params.nofb},result => {
+      console.log("Fee Result",result)
       this.feeDS = new MatTableDataSource(result)
     })
   }
@@ -79,13 +85,13 @@ export class FbEditComponent implements OnInit {
     )
   }
   reloadFeeDS(){
-    this.fee.getFees({nofb:this.route.snapshot.params.nofb}, result => {
+    this._fee.getFees({nofb:this.route.snapshot.params.nofb}, result => {
       this.feeDS = new MatTableDataSource(result)
     } )
   }
   removeFee(fee){
     fee.nofb = this.route.snapshot.params.nofb
-    this.fee.removeFee(fee, result => {
+    this._fee.removeFee(fee, result => {
       console.log("Result",result)
       this.reloadFeeDS()
     })
