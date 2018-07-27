@@ -34,7 +34,8 @@ export class ClientsComponent implements OnInit {
   }
   changePage($event){
     console.log("Event",$event)
-    this.client.getClients({segment:$event.pageSize,offset:$event.pageIndex},result => {
+    this.curPageSize = $event.pageSize
+    this.client.getClients({segment:$event.pageSize,offset:($event.pageIndex*this.curPageSize)},result => {
       this.objs = result
       this.curPageSize = $event.pageSize
       this.curIndex = $event.curIndex

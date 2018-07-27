@@ -1,5 +1,5 @@
 <mat-form-field class="full-width">
-  <mat-select placeholder="Choose Service" [(ngModel)]="clientservice">
+  <mat-select placeholder="Choose Service" [(ngModel)]="obj.category" (click)="clearInput()">
     <mat-option value="Enterprise">Enterprise</mat-option>
     <mat-option value="Business">Business</mat-option>
     <mat-option value="Web+Applications">Web+Applications</mat-option>
@@ -18,108 +18,108 @@
     <mat-option value="Custom">Custom</mat-option>
   </mat-select>
 </mat-form-field>
-<mat-form-field class="half-width" *ngIf="clientservice==='Enterprise'">
-  <mat-select placeholder="Mbps Up">
+<mat-form-field class="half-width" *ngIf="obj.category==='Enterprise'">
+  <mat-select placeholder="Mbps Up" [(ngModel)]="obj.upm" (selectionChange)="setUpStr()">
     <mat-option *ngFor="let i of enterprisesUpM" value="{{i}}">{{i}}</mat-option>
   </mat-select>
 </mat-form-field>
-<mat-form-field class="half-width" *ngIf="clientservice==='Enterprise'">
-  <mat-select placeholder="Kbps Up">
+<mat-form-field class="half-width" *ngIf="obj.category==='Enterprise'">
+  <mat-select placeholder="Kbps Up" [(ngModel)]="obj.upk" (selectionChange)="setUpStr()">
     <mat-option *ngFor="let i of enterprisesUpK" value="{{i}}">{{i}}</mat-option>
   </mat-select>
 </mat-form-field>
-<mat-form-field class="half-width" *ngIf="clientservice==='Enterprise'">
-  <mat-select placeholder="Mbps Down">
+<mat-form-field class="half-width" *ngIf="obj.category==='Enterprise'">
+  <mat-select placeholder="Mbps Down" [(ngModel)]="obj.dnm" (selectionChange)="setDnStr()">
     <mat-option *ngFor="let i of enterprisesDownM" value="{{i}}">{{i}}</mat-option>
   </mat-select>
 </mat-form-field>
-<mat-form-field class="half-width" *ngIf="clientservice==='Enterprise'">
-  <mat-select placeholder="Kbps Down">
+<mat-form-field class="half-width" *ngIf="obj.category==='Enterprise'">
+  <mat-select placeholder="Kbps Down" [(ngModel)]="obj.dnk" (selectionChange)="setDnStr()">
     <mat-option *ngFor="let i of enterprisesDownK" value="{{i}}">{{i}}</mat-option>
   </mat-select>
 </mat-form-field>
-<mat-form-field *ngIf="clientservice==='Business'">
-  <mat-select placeholder='Business Vals (Mbps)'>
+<mat-form-field *ngIf="obj.category==='Business'">
+  <mat-select placeholder='Business Vals (Mbps)' [(ngModel)]="obj.upm">
     <mat-option *ngFor='let i of businessVals' value="{{i}}">{{i}}</mat-option>
   </mat-select>
 </mat-form-field>
-<mat-form-field *ngIf="clientservice==='Colocation'" class="half-width">
-  <mat-select placeholder='Space'>
+<mat-form-field *ngIf="obj.category==='Colocation'" class="half-width">
+  <mat-select placeholder='Space' [(ngModel)]="obj.space">
     <mat-option *ngFor='let i of colocation.space' value="{{i}}">{{i}}</mat-option>
   </mat-select>
 </mat-form-field>
-<mat-form-field *ngIf="clientservice==='Colocation'" class="half-width">
-  <mat-select placeholder='Bandwidth' [(ngModel)]="colocation_model">
+<mat-form-field *ngIf="obj.category==='Colocation'" class="half-width">
+  <mat-select placeholder='Bandwidth' [(ngModel)]="obj.bandwidth">
     <mat-option *ngFor='let i of colocation.bw' value="{{i}}">{{i}}</mat-option>
   </mat-select>
 </mat-form-field>
-<mat-form-field *ngIf="colocation_model==='Custom'" class="half-width">
-  <mat-select placeholder='Mbps Up'>
+<mat-form-field *ngIf="obj.bandwidth==='Custom'" class="half-width">
+  <mat-select placeholder='Mbps Up' [(ngModel)]="obj.upm" (selectionChange)="setUpStr()">
     <mat-option *ngFor='let i of colocation_custom.UpM' value="{{i}}">{{i}}</mat-option>
   </mat-select>
 </mat-form-field>
-<mat-form-field *ngIf="colocation_model==='Custom'" class="half-width">
-  <mat-select placeholder='Kbps Up'>
+<mat-form-field *ngIf="obj.bandwidth==='Custom'" class="half-width">
+  <mat-select placeholder='Kbps Up' [(ngModel)]="obj.upk" (selectionChange)="setUpStr()">
     <mat-option *ngFor='let i of colocation_custom.UpK' value="{{i}}">{{i}}</mat-option>
   </mat-select>
 </mat-form-field>
 
 
-<mat-form-field *ngIf="colocation_model==='Custom'" class="half-width">
-  <mat-select placeholder='Mbps Down'>
+<mat-form-field *ngIf="obj.bandwidth==='Custom'" class="half-width">
+  <mat-select placeholder='Mbps Down' [(ngModel)]="obj.dnm" (selectionChange)="setDnStr()">
     <mat-option *ngFor='let i of colocation_custom.DnM' value="{{i}}">{{i}}</mat-option>
   </mat-select>
 </mat-form-field>
-<mat-form-field *ngIf="colocation_model==='Custom'" class="half-width">
-  <mat-select placeholder='Kbps Down'>
+<mat-form-field *ngIf="obj.bandwidth==='Custom'" class="half-width">
+  <mat-select placeholder='Kbps Down' [(ngModel)]="obj.dnk" (selectionChange)="setDnStr()">
     <mat-option *ngFor='let i of colocation_custom.DnK' value="{{i}}">{{i}}</mat-option>
   </mat-select>
 </mat-form-field>
 
-<mat-form-field *ngIf="clientservice==='IIX'" class="half-width">
-  <mat-select placeholder='Mbps Up'>
+<mat-form-field *ngIf="obj.category==='IIX'" class="half-width">
+  <mat-select placeholder='Mbps Up' [(ngModel)]="obj.upm" (selectionChange)="setUpStr()">
     <mat-option *ngFor='let i of colocation_custom.UpM' value="{{i}}">{{i}}</mat-option>
   </mat-select>
 </mat-form-field>
-<mat-form-field *ngIf="clientservice==='IIX'" class="half-width">
-  <mat-select placeholder='Kbps Up'>
+<mat-form-field *ngIf="obj.category==='IIX'" class="half-width">
+  <mat-select placeholder='Kbps Up' [(ngModel)]="obj.upk" (selectionChange)="setUpStr()">
     <mat-option *ngFor='let i of colocation_custom.UpK' value="{{i}}">{{i}}</mat-option>
   </mat-select>
 </mat-form-field>
-<mat-form-field *ngIf="clientservice==='IIX'" class="half-width">
-  <mat-select placeholder='Mbps Down'>
+<mat-form-field *ngIf="obj.category==='IIX'" class="half-width">
+  <mat-select placeholder='Mbps Down' [(ngModel)]="obj.dnm" (selectionChange)="setDnStr()">
     <mat-option *ngFor='let i of colocation_custom.DnM' value="{{i}}">{{i}}</mat-option>
   </mat-select>
 </mat-form-field>
-<mat-form-field *ngIf="clientservice==='IIX'" class="half-width">
-  <mat-select placeholder='Kbps Down'>
+<mat-form-field *ngIf="obj.category==='IIX'" class="half-width">
+  <mat-select placeholder='Kbps Down' [(ngModel)]="obj.dnk" (selectionChange)="setDnStr()">
     <mat-option *ngFor='let i of colocation_custom.DnK' value="{{i}}">{{i}}</mat-option>
   </mat-select>
 </mat-form-field>
 
-<mat-form-field *ngIf="clientservice==='Local Loop'" class="half-width">
-  <mat-select placeholder='Mbps Up'>
+<mat-form-field *ngIf="obj.category==='Local Loop'" class="half-width">
+  <mat-select placeholder='Mbps Up' [(ngModel)]="obj.upm" (selectionChange)="setUpStr()">
     <mat-option *ngFor='let i of colocation_custom.UpM' value="{{i}}">{{i}}</mat-option>
   </mat-select>
 </mat-form-field>
-<mat-form-field *ngIf="clientservice==='Local Loop'" class="half-width">
-  <mat-select placeholder='Kbps Up'>
+<mat-form-field *ngIf="obj.category==='Local Loop'" class="half-width">
+  <mat-select placeholder='Kbps Up' [(ngModel)]="obj.upk" (selectionChange)="setUpStr()">
     <mat-option *ngFor='let i of colocation_custom.UpK' value="{{i}}">{{i}}</mat-option>
   </mat-select>
 </mat-form-field>
 
-<mat-form-field *ngIf="clientservice==='Symetrical Broadband Internet (SBI)'" class="half-width">
-  <mat-select placeholder='Value'>
+<mat-form-field *ngIf="obj.category==='Symetrical Broadband Internet (SBI)'" class="half-width">
+  <mat-select placeholder='SBI Value (Mbps)' [(ngModel)]="obj.customservice">
     <mat-option *ngFor='let i of sbi' value="{{i}}">{{i}}</mat-option>
   </mat-select>
 </mat-form-field>
 
-<mat-form-field *ngIf="clientservice==='Padi Cluster'" class="half-width">
+<mat-form-field *ngIf="obj.category==='Padi Cluster'" class="half-width">
   <mat-select placeholder='Value'>
     <mat-option *ngFor='let i of padicluster' value="{{i}}">{{i}}</mat-option>
   </mat-select>
 </mat-form-field>
-<mat-form-field class="full-width">
-  <textarea name="" id="" cols="30" rows="10" matInput placeholder="Custom Service"></textarea>
+<mat-form-field *ngIf="obj.category==='Custom'" class="full-width">
+  <textarea name="" id="" cols="30" rows="10" matInput placeholder="Custom Service" [(ngModel)]="obj.customservice"></textarea>
 </mat-form-field>
 <button mat-button (click)="doSaveService()">Save</button>
