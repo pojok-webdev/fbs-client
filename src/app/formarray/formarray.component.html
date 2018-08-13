@@ -1,0 +1,4 @@
+<div *ngFor="let city of cities.controls;index as i">
+  <input type="text">
+  <input type="text" [formControlName]="i" placeholder="City">
+</div>
