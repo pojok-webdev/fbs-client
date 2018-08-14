@@ -37,8 +37,8 @@ export class FbEditComponent implements OnInit {
     private padiService : PadiserviceService,
     private route : ActivatedRoute,
     private dialog : MatDialog,
-    private datePipe: DatePipe,
-    private _fee:FbfeeService
+    private datePipe : DatePipe,
+    private _fee : FbfeeService
   ) {
     this.fb.getFb({nofb:this.route.snapshot.params.nofb},result => {
       console.log("selected FB",result)
@@ -105,12 +105,14 @@ export class FbEditComponent implements OnInit {
     .afterClosed()
     .subscribe(
       data => {
+        console.log('After Close Service Dialog',data)
         this.reloadServiceDS()
       }
     )
   }
   reloadServiceDS(){
-    this.padiService.getServices({nofb:this.route.snapshot.params.nofb}, result => {
+    this.padiService.getServices({fb_id:this.route.snapshot.params.nofb}, result => {
+      console.log('reload service',result)
       this.serviceDS = new MatTableDataSource(result)
     })
   }

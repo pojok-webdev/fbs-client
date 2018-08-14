@@ -15,6 +15,7 @@ padiservices : Observable<any[]>
     this.padiservices = this.http.get<any[]>(this.appconf.server+'/getservices/'+obj.fb_id)
     this.padiservices.subscribe(
       data => {
+        console.log('getServices Obj FB ID',obj.fb_id)
         console.log("Success",data)
         callback(data)
       },
@@ -28,6 +29,7 @@ padiservices : Observable<any[]>
     this.padiservice = this.http.get<any>(this.appconf.server+'/getservice/'+obj.id)
     this.padiservice.subscribe(
       data => {
+        console.log('Obj ID',obj.id)
         console.log("Success",data)
         callback(data)
       },

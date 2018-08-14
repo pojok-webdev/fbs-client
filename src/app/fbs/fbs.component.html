@@ -1,3 +1,11 @@
+<mat-toolbar>
+  <span></span>
+  <span class="fill-empty-space"></span>
+  <span>
+      <mat-icon matTooltip="Back to Clients" matTooltipPosition="above" svgIcon="navBack"></mat-icon>
+      <mat-icon matTooltip="Add FB" matTooltipPosition="above" svgIcon="add" routerLink="/fbadd/1803"></mat-icon>
+  </span>
+</mat-toolbar>
 <table mat-table [dataSource]='dataSource'>
   <ng-container matColumnDef="name">
     <th mat-header-cell *matHeaderCellDef>Name</th>

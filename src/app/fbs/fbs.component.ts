@@ -61,5 +61,4 @@ export class FbsComponent implements OnInit {
   }
   ngOnInit() {
   }
-
 }

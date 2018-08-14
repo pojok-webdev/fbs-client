@@ -11,8 +11,24 @@ import { UserChangepasswordComponent } from './user-changepassword/user-changepa
 })
 export class AppComponent {
   title = 'app';
-  constructor(private auth:AuthService,private icon:MatIconRegistry,private sanitizer:DomSanitizer,private dialog: MatDialog){
-    this.icon.addSvgIcon("userprofile",this.sanitizer.bypassSecurityTrustResourceUrl("assets/round-person-24px.svg"))
+  constructor(
+    private auth:AuthService,
+    private icon:MatIconRegistry,
+    private sanitizer:DomSanitizer,
+    private dialog: MatDialog
+  ){
+    this.icon.addSvgIcon(
+      "userprofile",
+      this.sanitizer.bypassSecurityTrustResourceUrl("assets/round-person-24px.svg")
+    )
+    this.icon.addSvgIcon(
+      "add",
+      this.sanitizer.bypassSecurityTrustResourceUrl("assets/baseline-add_circle_outline-24px.svg")
+    )
+    this.icon.addSvgIcon(
+      "navBack",
+      this.sanitizer.bypassSecurityTrustResourceUrl("assets/baseline-subdirectory_arrow_left-24px.svg")
+    )
   }
   logout(){
     console.log("Logged Out")

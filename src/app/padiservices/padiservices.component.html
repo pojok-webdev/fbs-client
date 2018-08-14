@@ -1,3 +1,11 @@
+<mat-toolbar>
+    <span></span>
+  <span class="fill-empty-space"></span>
+  <span>
+      <mat-icon matTooltip="Back to FB" matTooltipPosition="above" svgIcon="navBack"></mat-icon>
+      <mat-icon matTooltip="Add Service" matTooltipPosition="above" svgIcon="add" (click)="addServiceDialog()"></mat-icon>
+  </span>
+</mat-toolbar>
 <table mat-table [dataSource]="serviceDS">
   <ng-container matColumnDef="category">
     <th mat-header-cell *matHeaderCellDef>Category</th>

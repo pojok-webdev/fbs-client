@@ -130,9 +130,13 @@
   </mat-tab>
   <mat-tab label="Fees">
     <mat-toolbar>
-      <mat-toolbar-row>
-          <button mat-button mat-raised-button color="gold" (click)="addFeeDialog(feeobj)">Add Fee</button>
-      </mat-toolbar-row>
+        <span></span>
+        <span class="fill-empty-space"></span>
+        <span>
+            <mat-icon matTooltip="Back to Clients" matTooltipPosition="above" svgIcon="navBack"></mat-icon>
+            <mat-icon matTooltip="Add FB" matTooltipPosition="above" svgIcon="add" (click)="addFeeDialog(feeobj)"></mat-icon>
+        </span>
+
     </mat-toolbar>
     <table mat-table [dataSource]="feeDS" class="full-width">
       <ng-container matColumnDef="name">
