@@ -27,6 +27,7 @@ import { UserChangepasswordComponent } from './user-changepassword/user-changepa
 import { ClientsComponent } from './clients/clients.component';
 import { ClientAddComponent } from './client-add/client-add.component';
 import { FbServiceAddComponent } from './fb-service-add/fb-service-add.component';
+import { PicAddComponent } from './pic-add/pic-add.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +44,8 @@ import { FbServiceAddComponent } from './fb-service-add/fb-service-add.component
     UserChangepasswordComponent,
     ClientsComponent,
     ClientAddComponent,
-    FbServiceAddComponent
+    FbServiceAddComponent,
+    PicAddComponent
   ],
   imports: [
     BrowserModule,
@@ -72,7 +74,7 @@ import { FbServiceAddComponent } from './fb-service-add/fb-service-add.component
     DatePipe,
     globalVars
   ],
-  entryComponents:[FbFeeAddComponent,FbServiceAddComponent],
+  entryComponents:[FbFeeAddComponent,FbServiceAddComponent,PicAddComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,33 @@
+<mat-form-field class="full-width">
+  <input type="text" matInput [(ngModel)]="pic.name" placeholder="Name">
+</mat-form-field>
+<mat-form-field class="full-width">
+  <mat-select [(ngModel)]="pic.role" placeholder="Role">
+    <mat-option value="sub">Subscriber</mat-option>
+    <mat-option value="tek">Teknis</mat-option>
+    <mat-option value="sup">Support</mat-option>
+    <mat-option value="res">Responsibility</mat-option>
+    <mat-option value="bil">Billing</mat-option>
+    <mat-option value="adm">Administrator</mat-option>
+  </mat-select>
+</mat-form-field>
+<mat-form-field class="full-width">
+  <input type="text" matInput [(ngModel)]="pic.position" placeholder="Position">
+</mat-form-field>
+<mat-form-field class="full-width">
+    <input type="text" matInput [(ngModel)]="pic.idnum" placeholder="idnum">
+</mat-form-field>
+<mat-form-field class="full-width">
+  <input type="text" matInput [(ngModel)]="pic.phone" placeholder="Phone">
+</mat-form-field>
+<mat-form-field class="full-width">
+  <input type="text" matInput [(ngModel)]="pic.hp" placeholder="HP">
+</mat-form-field>
+<mat-form-field class="full-width">
+  <input type="text" matInput [(ngModel)]="pic.email" placeholder="Email">
+</mat-form-field>
+  
+
+<button mat-button (click)="savePic(pic)">Save</button>
+<button mat-button (click)="closeButton()">Close</button>
+

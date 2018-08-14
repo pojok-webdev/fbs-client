@@ -45,9 +45,12 @@
   </mat-tab>
   <mat-tab label="PIC">
     <mat-toolbar>
-      <mat-toolbar-row>
-          <button mat-button mat-raised-button color="gold">Add PIC</button>
-      </mat-toolbar-row>
+        <span></span>
+        <span class="fill-empty-space"></span>
+        <span>
+            <mat-icon matTooltip="Back to Clients" matTooltipPosition="above" svgIcon="navBack"></mat-icon>
+            <mat-icon matTooltip="Add PIC" matTooltipPosition="above" svgIcon="add" (click)="addPICDialog()"></mat-icon>
+        </span>
     </mat-toolbar>
     <table class="full-width" mat-table [dataSource]="picsDS" >
       <ng-container matColumnDef="name">

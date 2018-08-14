@@ -8,6 +8,7 @@ import { PadiserviceService } from '../padiservice.service';
 import { FbFeeAddComponent } from '../fb-fee-add/fb-fee-add.component';
 import { FbfeeService } from '../fbfee.service';
 import { FbServiceAddComponent } from '../fb-service-add/fb-service-add.component';
+import { PicAddComponent } from '../pic-add/pic-add.component';
 
 @Component({
   selector: 'app-fb-edit',
@@ -114,6 +115,24 @@ export class FbEditComponent implements OnInit {
     this.padiService.getServices({fb_id:this.route.snapshot.params.nofb}, result => {
       console.log('reload service',result)
       this.serviceDS = new MatTableDataSource(result)
+    })
+  }
+  addPICDialog(pic){
+    console.log("PIC tosend",pic)
+    this.dialog.open(PicAddComponent,{
+      data:{fb_id:this.route.snapshot.params.nofb}
+    })
+    .afterClosed()
+    .subscribe(
+      data => {
+        this.reloadPicDS(data)
+      }
+    )
+  }
+  reloadPicDS(data){
+    this.pic.getPics({nofb:this.route.snapshot.params.nofb},result => {
+      console.log('reload pics',result)
+      this.picsDS = new MatTableDataSource(result)
     })
   }
   ngOnInit() {
