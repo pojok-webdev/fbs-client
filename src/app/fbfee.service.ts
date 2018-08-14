@@ -28,7 +28,7 @@ export class FbfeeService {
     this.fee.subscribe(
       data => {
         console.log("getFee Result",data)
-        callback(data)
+        callback(data[0])
       },
       err => {
         console.log("getFee Error",err)
@@ -49,8 +49,9 @@ export class FbfeeService {
       }
     )
   }
-  updateFb(obj,callback){
-    this.fee = this.http.post<any>(this.appvar.server + '/updatefb',obj)
+  updateFee(obj,callback){
+    console.log('update Fee invoked',obj)
+    this.fee = this.http.post<any>(this.appvar.server + '/updatefee',obj)
     this.fee.subscribe(
       data => {
         console.log("updatefb success",data)

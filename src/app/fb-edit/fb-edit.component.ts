@@ -64,13 +64,29 @@ export class FbEditComponent implements OnInit {
     this.dialog.open(FbFeeAddComponent,{
       width: '500px',
       data: {
-        obj:_obj
+        obj:_obj,
+        action:'create'
       }
     })
     .afterClosed()
     .subscribe(
       result =>{
         console.log("After Close",result)
+        this.reloadFeeDS()
+      }
+    )
+  }
+  editFeeDialog(fee){
+    this.dialog.open(FbFeeAddComponent,{
+      width:'500px',
+      data:{
+        obj:fee,
+        action:'update'
+      }
+    })
+    .afterClosed()
+    .subscribe(
+      data => {
         this.reloadFeeDS()
       }
     )
@@ -99,7 +115,7 @@ export class FbEditComponent implements OnInit {
       }
     )
   }
-  padiserviceedit(_obj){
+  editServiceDialog(_obj){
     this.dialog.open(FbServiceAddComponent,{
       width:'500px',
       data:{
