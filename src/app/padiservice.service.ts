@@ -12,6 +12,7 @@ padiservice : Observable<any>
 padiservices : Observable<any[]>
   constructor(private http: HttpClient,private appconf:AppconfService) {}
   getServices(obj,callback){
+    console.log('OBJ accepted',obj)
     this.padiservices = this.http.get<any[]>(this.appconf.server+'/getservices/'+obj.fb_id)
     this.padiservices.subscribe(
       data => {
@@ -31,7 +32,7 @@ padiservices : Observable<any[]>
       data => {
         console.log('Obj ID',obj.id)
         console.log("Success",data)
-        callback(data)
+        callback(data[0])
       },
       err => {
         console.log("Error",err)

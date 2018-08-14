@@ -45,21 +45,11 @@ export class FbEditComponent implements OnInit {
       console.log("selected FB",result)
       this.obj = result
     })
-    this.pic.getPics({nofb:this.route.snapshot.params.nofb},result => {
-      console.log("PICS",result)
-      this.picsDS = new MatTableDataSource(result)
-    })
-    this.padiService.getServices({fb_id:this.route.snapshot.params.nofb}, result => {
-      console.log("Services",result)
-      this.serviceDS = new MatTableDataSource(result)
-    })
-    this._fee.getFees({nofb:this.route.snapshot.params.nofb},result => {
-      console.log("Fee Result",result)
-      this.feeDS = new MatTableDataSource(result)
-    })
+    this.reloadPicDS()
+    this.reloadServiceDS()
+    this.reloadFeeDS()
   }
   updateFb(obj){
-    console.log("UpdateFB invoked",this.obj)
     obj.period1 = this.datePipe.transform(obj.period1,'yyy-MM-dd').toString()
     obj.period2 = this.datePipe.transform(obj.period2,'yyy-MM-dd')
     obj.activationdate = this.datePipe.transform(obj.activationdate,'yyy-MM-dd')
@@ -85,11 +75,6 @@ export class FbEditComponent implements OnInit {
       }
     )
   }
-  reloadFeeDS(){
-    this._fee.getFees({nofb:this.route.snapshot.params.nofb}, result => {
-      this.feeDS = new MatTableDataSource(result)
-    } )
-  }
   removeFee(fee){
     fee.nofb = this.route.snapshot.params.nofb
     this._fee.removeFee(fee, result => {
@@ -101,7 +86,10 @@ export class FbEditComponent implements OnInit {
     _obj.nofb = this.route.snapshot.params.nofb
     this.dialog.open(FbServiceAddComponent,{
       width: '500px',
-      data:{obj:_obj}
+      data:{
+        obj:_obj,
+        action:'create'
+      }
     })
     .afterClosed()
     .subscribe(
@@ -111,11 +99,21 @@ export class FbEditComponent implements OnInit {
       }
     )
   }
-  reloadServiceDS(){
-    this.padiService.getServices({fb_id:this.route.snapshot.params.nofb}, result => {
-      console.log('reload service',result)
-      this.serviceDS = new MatTableDataSource(result)
+  padiserviceedit(_obj){
+    this.dialog.open(FbServiceAddComponent,{
+      width:'500px',
+      data:{
+        obj:_obj,
+        action:'update'
+      }
     })
+    .afterClosed()
+    .subscribe(
+      data => {
+        console.log(data)
+        this.reloadServiceDS()
+      }
+    )
   }
   addPICDialog(pic){
     console.log("PIC tosend",pic)
@@ -125,11 +123,23 @@ export class FbEditComponent implements OnInit {
     .afterClosed()
     .subscribe(
       data => {
-        this.reloadPicDS(data)
+        console.log(data)
+        this.reloadPicDS()
       }
     )
   }
-  reloadPicDS(data){
+  reloadFeeDS(){
+    this._fee.getFees({nofb:this.route.snapshot.params.nofb}, result => {
+      this.feeDS = new MatTableDataSource(result)
+    } )
+  }
+  reloadServiceDS(){
+    this.padiService.getServices({fb_id:this.route.snapshot.params.nofb}, result => {
+      console.log('reload service',result)
+      this.serviceDS = new MatTableDataSource(result)
+    })
+  }
+  reloadPicDS(){
     this.pic.getPics({nofb:this.route.snapshot.params.nofb},result => {
       console.log('reload pics',result)
       this.picsDS = new MatTableDataSource(result)

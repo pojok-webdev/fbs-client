@@ -95,9 +95,12 @@
   </mat-tab>
   <mat-tab label="Services">
     <mat-toolbar>
-      <mat-toolbar-row>
-          <button mat-button mat-raised-button color="gold" (click)="addServiceDialog(obj)">Add Service</button>
-      </mat-toolbar-row>
+        <span></span>
+        <span class="fill-empty-space"></span>
+        <span>
+            <mat-icon matTooltip="Back to Clients" matTooltipPosition="above" svgIcon="navBack"></mat-icon>
+            <mat-icon matTooltip="Add PIC" matTooltipPosition="above" svgIcon="add" (click)="addServiceDialog(obj)"></mat-icon>
+        </span>
     </mat-toolbar>
     <table mat-table [dataSource]="serviceDS" class="full-width">
       <ng-container matColumnDef="category">
@@ -123,7 +126,7 @@
         <th mat-header-cell *matHeaderCellDef>Actions</th>
         <td matc-cell *matCellDef="let obj">
           <mat-select name="" placeholder="Select">
-            <mat-option routerLink="padiserviceedit">Edit</mat-option>
+            <mat-option (click)="padiserviceedit(obj)">Edit</mat-option>
           </mat-select>
         </td>
       </ng-container>
