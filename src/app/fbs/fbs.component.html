@@ -1,9 +1,11 @@
 <mat-toolbar>
-  <span></span>
+  <span>
+    <h1>{{obj.name}}</h1>
+  </span>
   <span class="fill-empty-space"></span>
   <span>
-      <mat-icon matTooltip="Back to Clients" matTooltipPosition="above" svgIcon="navBack"></mat-icon>
-      <mat-icon matTooltip="Add FB" matTooltipPosition="above" svgIcon="add" routerLink="/fbadd/1803"></mat-icon>
+      <mat-icon matTooltip="Back to Clients" matTooltipPosition="above" svgIcon="navBack" routerLink="/clients"></mat-icon>
+      <mat-icon matTooltip="Add FB" matTooltipPosition="above" svgIcon="add" routerLink="/fbadd/{{obj.id}}"></mat-icon>
   </span>
 </mat-toolbar>
 <table mat-table [dataSource]='dataSource'>
@@ -47,9 +49,10 @@
     <th mat-header-cell *matHeaderCellDef>Actions</th>
     <td mat-cell *matCellDef="let element">
       <mat-select placeholder="Pilih">
-        <mat-option routerLink="/fbedit/{{element.nofb}}">Edit</mat-option>
-        <mat-option routerLink="/pics/{{element.nofb}}">PICs</mat-option>
-        <mat-option routerLink="/padiservices/{{element.nofb}}">Services</mat-option>
+        <mat-option routerLink="/fbedit/edit/{{element.nofb}}">Edit</mat-option>
+        <mat-option routerLink="/fbedit/pics/{{element.nofb}}">PICs</mat-option>
+        <mat-option routerLink="/fbedit/services/{{element.nofb}}">Services</mat-option>
+        <mat-option routerLink="/fbedit/fees/{{element.nofb}}">Fees</mat-option>
         <mat-divider></mat-divider>
         <mat-option (click)="confirmRemoveFb(element)">Hapus</mat-option>
       </mat-select>

@@ -29,6 +29,10 @@ export class AppComponent {
       "navBack",
       this.sanitizer.bypassSecurityTrustResourceUrl("assets/baseline-subdirectory_arrow_left-24px.svg")
     )
+    this.icon.addSvgIcon(
+      "save",
+      this.sanitizer.bypassSecurityTrustResourceUrl("assets/baseline-save-24px.svg")
+    )
   }
   logout(){
     console.log("Logged Out")

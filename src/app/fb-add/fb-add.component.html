@@ -2,9 +2,11 @@
 <mat-tab-group>
   <mat-tab label="FB">
       <mat-toolbar>
-          <mat-toolbar-row>
-            <button mat-button mat-raised-button color="accent" (click)="saveFb(obj)">Save</button>
-          </mat-toolbar-row>
+        <span></span>
+        <span class="fill-empty-space"></span>
+        <span>
+          <mat-icon svgIcon="save" matTooltip="Save FB" matTooltipPosition="above" (click)="saveFb(obj)"></mat-icon>
+        </span>
       </mat-toolbar>  
     <mat-form-field class="full-width">
       <input type="text" matInput placeholder="Name" [(ngModel)]="obj.name" [ngModelOptions]="{standalone:true}">

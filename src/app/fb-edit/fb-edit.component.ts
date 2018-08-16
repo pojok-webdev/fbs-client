@@ -20,7 +20,8 @@ export class FbEditComponent implements OnInit {
   obj = {
     client_id:'',
     upstr:'',
-    dnstr:''
+    dnstr:'',
+    name:''
   } 
   feeobj = {}
   that = this
@@ -30,6 +31,7 @@ export class FbEditComponent implements OnInit {
   serviceDS = new MatTableDataSource()
   feeDS = new MatTableDataSource()
   feeColumns : String[] = ['name','dpp','ppn','actions']
+  selectedTab = 0
   fee = {
     name:''
   }
@@ -42,6 +44,20 @@ export class FbEditComponent implements OnInit {
     private datePipe : DatePipe,
     private _fee : FbfeeService
   ) {
+    switch(this.route.snapshot.params.tab){
+      case 'edit':
+        this.selectedTab = 0
+      break;
+      case 'pics':
+      this.selectedTab = 1
+      break;
+      case 'services':
+      this.selectedTab = 2
+      break;
+      case 'fees':
+      this.selectedTab = 3
+      break
+    }
     this.fb.getFb({nofb:this.route.snapshot.params.nofb},result => {
       console.log("selected FB",result)
       this.obj = result

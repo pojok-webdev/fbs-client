@@ -47,7 +47,7 @@ export class FbAddComponent implements OnInit {
     console.log("FB Saved",obj)
     this.fb.saveFb(obj, result => {
       console.log("Save Result",result)
-      window.location.href = '/fbedit/'+obj.nofb
+      window.location.href = '/fbedit/edit/'+obj.nofb
     })
   }
   ngOnInit() {

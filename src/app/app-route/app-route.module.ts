@@ -15,7 +15,7 @@ import { ClientAddComponent } from '../client-add/client-add.component';
 
 const routes: Routes = [
   {path:'fbs/:client_id/:pageIndex/:pageSize',component: FbsComponent},
-  {path:'fbedit/:nofb',component: FbEditComponent},
+  {path:'fbedit/:tab/:nofb',component: FbEditComponent},
   {path:'pics/:nofb',component:PicsComponent},
   {path:'picedit/:nofb/:role',component:PicEditComponent},
   {path:'padiservices/:fb_id',component:PadiservicesComponent},
