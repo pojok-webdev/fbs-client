@@ -92,6 +92,21 @@ export class FbEditComponent implements OnInit {
       }
     )
   }
+  removeFeeDialog(fee){
+    this.dialog.open(ConfirmDialogComponent,{
+      width:'500px',
+      data:{
+        obj:fee,
+        objtype:'removefee',
+        actParam:() => {
+          fee.nofb = this.route.snapshot.params.nofb
+          this._fee.removeFee(fee,result => {
+            this.reloadFeeDS()
+          })
+        }
+      }
+    })
+  }
   removeFee(fee){
     fee.nofb = this.route.snapshot.params.nofb
     this._fee.removeFee(fee, result => {

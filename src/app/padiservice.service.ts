@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AppconfService } from './appconf.service';
-import { PLATFORM_WORKER_APP_ID } from '@angular/common/src/platform_id';
 
 @Injectable({
   providedIn: 'root'
@@ -77,7 +76,7 @@ padiservices : Observable<any[]>
     let out = []
     for(let x = start;x <= end; x++){
       let _x = this.addPrefix('0',2,x*step)
-      out[x] = this.addPrefix('0',2,x*step)+' '+unit//x
+      out[x] = this.addPrefix('0',2,x*step)+' '+unit
     }
     return out
   }
