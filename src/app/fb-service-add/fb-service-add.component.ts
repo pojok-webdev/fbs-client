@@ -13,6 +13,7 @@ export class FbServiceAddComponent implements OnInit {
     category:'',
     name:'',
     fb_id:'',
+    nofb:'',
     createuser:'anonymous',
     bwtype:'',
     upm:'',
@@ -31,7 +32,8 @@ export class FbServiceAddComponent implements OnInit {
     private dialog : MatDialogRef<any>
   ) {
     console.log("No FB",this.data.obj)
-    this.obj.fb_id = this.data.obj.fb_id
+    this.obj.fb_id = this.data.obj.nofb
+    this.obj.nofb = this.data.obj.nofb
     switch(this.data.action){
       case 'update':
         this.padiservice.getService({id:this.data.obj.id},result => {
@@ -90,7 +92,8 @@ export class FbServiceAddComponent implements OnInit {
       id:'',
       category:'',
       name:'',
-      fb_id:this.obj.fb_id,
+      fb_id:this.obj.nofb,
+      nofb:this.obj.nofb,
       createuser:'anonymous',
       bwtype:'',
       upm:'',
