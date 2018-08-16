@@ -231,6 +231,9 @@ export class FbEditComponent implements OnInit {
       this.picsDS = new MatTableDataSource(result)
     })
   }
+  backToFbs(){
+    window.location.href = '/fbs/'+this.obj.client_id+'/0/10'
+  }
   ngOnInit() {
   }
 

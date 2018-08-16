@@ -88,4 +88,18 @@ export class FbService {
       }
     )
   }
+  removeFb(obj,callback){
+    console.log('OBJ element',obj)
+    this.fb = this.http.post(this.appconf.server+'/removefb',obj)
+    this.fb.subscribe(
+      data => {
+        console.log('remove FB',data)
+        callback(data)
+      },
+      err => {
+        console.log('error remove FB',err)
+        callback(err)
+      }
+    )
+  }
 }

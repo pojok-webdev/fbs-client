@@ -22,20 +22,23 @@ export class FbsComponent implements OnInit {
     this.auth.isLogin((result,msg) => {
       if(result){
         console.log("Anda telah Login",msg)
-        this.fb.getFbs({
-          client_id:this.route.snapshot.params.client_id,
-          pageIndex:this.route.snapshot.params.pageIndex,
-          pageSize:this.route.snapshot.params.pageSize
-        },result=>{
-          this.dataSource = new MatTableDataSource(result)
-        })
-        this.fb.fbCount({client_id:this.route.snapshot.params.client_id},result => {
-          this.fbcount = result
-        })
+        this.reloadFB()
       }else{
         console.log("Error Login",msg)
         window.location.href = "/login"
       }
+    })
+  }
+  reloadFB(){
+    this.fb.getFbs({
+      client_id:this.route.snapshot.params.client_id,
+      pageIndex:this.route.snapshot.params.pageIndex,
+      pageSize:this.route.snapshot.params.pageSize
+    },result=>{
+      this.dataSource = new MatTableDataSource(result)
+    })
+    this.fb.fbCount({client_id:this.route.snapshot.params.client_id},result => {
+      this.fbcount = result
     })
   }
   reloadData(ev){
@@ -57,6 +60,13 @@ export class FbsComponent implements OnInit {
         console.log("Error Login",msg)
         window.location.href = "/login"
       }
+    })
+  }
+  doRemoveFb(element){
+    console.log('Element',element)
+    this.fb.removeFb(element,result => {
+      console.log(result)
+      this.reloadFB()
     })
   }
   ngOnInit() {

@@ -51,7 +51,7 @@
         <mat-option routerLink="/pics/{{element.nofb}}">PICs</mat-option>
         <mat-option routerLink="/padiservices/{{element.nofb}}">Services</mat-option>
         <mat-divider></mat-divider>
-        <mat-option>Hapus</mat-option>
+        <mat-option (click)="doRemoveFb(element)">Hapus</mat-option>
       </mat-select>
     </td>
   </ng-container>
