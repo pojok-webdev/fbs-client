@@ -28,6 +28,7 @@ import { ClientsComponent } from './clients/clients.component';
 import { ClientAddComponent } from './client-add/client-add.component';
 import { FbServiceAddComponent } from './fb-service-add/fb-service-add.component';
 import { PicAddComponent } from './pic-add/pic-add.component';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +46,8 @@ import { PicAddComponent } from './pic-add/pic-add.component';
     ClientsComponent,
     ClientAddComponent,
     FbServiceAddComponent,
-    PicAddComponent
+    PicAddComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -74,7 +76,12 @@ import { PicAddComponent } from './pic-add/pic-add.component';
     DatePipe,
     globalVars
   ],
-  entryComponents:[FbFeeAddComponent,FbServiceAddComponent,PicAddComponent],
+  entryComponents:[
+    FbFeeAddComponent,
+    FbServiceAddComponent,
+    PicAddComponent,
+    ConfirmDialogComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

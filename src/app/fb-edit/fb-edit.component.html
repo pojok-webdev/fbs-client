@@ -85,7 +85,8 @@
           <th mat-header-cell *matHeaderCellDef>Actions</th>
           <td mat-cell *matCellDef="let pic">
             <mat-select placeholder="Pilih">
-              <mat-option routerLink="/picedit/{{pic.nofb}}/{{pic.role}}">Edit</mat-option>
+              <mat-option (click)="editPicDialog(pic)">Edit</mat-option>
+              <mat-option (click)="removePicDialog(pic)">Remove</mat-option>
             </mat-select>
           </td>
       </ng-container>

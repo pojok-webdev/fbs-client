@@ -61,4 +61,19 @@ pic : Observable<any>
       }
     )
   }
+  removePic(obj,callback){
+    console.log("Remve PIC invoked",obj)
+    this.pic = this.http.post(this.appconf.server+'/removepic',obj)
+    this.pic.subscribe(
+      data => {
+        console.log('remove result',data)
+        callback(data)
+      },
+      err => {
+        console.log(err)
+        callback(err)
+      }
+    )
+    callback("obj")
+  }
 }

@@ -9,6 +9,7 @@ import { FbFeeAddComponent } from '../fb-fee-add/fb-fee-add.component';
 import { FbfeeService } from '../fbfee.service';
 import { FbServiceAddComponent } from '../fb-service-add/fb-service-add.component';
 import { PicAddComponent } from '../pic-add/pic-add.component';
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-fb-edit',
@@ -33,7 +34,7 @@ export class FbEditComponent implements OnInit {
     name:''
   }
   constructor(
-    private fb:FbService,
+    private fb : FbService,
     private pic : PicService,
     private padiService : PadiserviceService,
     private route : ActivatedRoute,
@@ -134,13 +135,53 @@ export class FbEditComponent implements OnInit {
   addPICDialog(pic){
     console.log("PIC tosend",pic)
     this.dialog.open(PicAddComponent,{
-      data:{fb_id:this.route.snapshot.params.nofb}
+      data:{
+        fb_id:this.route.snapshot.params.nofb,
+        action:'create'
+      }
     })
     .afterClosed()
     .subscribe(
       data => {
         console.log(data)
         this.reloadPicDS()
+      }
+    )
+  }
+  editPicDialog(pic){
+    this.dialog.open(PicAddComponent,{
+      width:'500px',
+      data:{
+        obj:pic,
+        action:'update'
+      }
+    })
+    .afterClosed()
+    .subscribe(
+      data => {
+        console.log(data)
+        this.reloadPicDS()
+      }
+    )
+  }
+  removePicDialog(pic){
+    this.dialog.open(ConfirmDialogComponent,{
+      width:'500px',
+      data:{
+        obj:pic,
+        objtype:'removepic',
+        actParam:()=>{
+          console.log('Pic received',pic)
+            this.pic.removePic(pic,result => {
+            this.reloadPicDS()
+          })
+        }
+      }
+    })
+    .afterClosed()
+    .subscribe(
+      data => {
+        console.log(data)
       }
     )
   }

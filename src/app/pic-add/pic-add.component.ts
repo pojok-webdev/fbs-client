@@ -24,8 +24,16 @@ export class PicAddComponent implements OnInit {
     private picservice:PicService,
     @Inject (MAT_DIALOG_DATA) public data :any
   ) {
-    console.log('id', this.data)
-    this.pic.nofb = this.data.fb_id
+    console.log('data sent',data)
+    switch(this.data.action){
+      case 'update':
+        this.pic = data.obj
+      break
+      case 'create':
+        console.log('id', this.data)
+        this.pic.nofb = this.data.fb_id  
+      break
+    }
   }
 
   ngOnInit() {
@@ -34,10 +42,19 @@ export class PicAddComponent implements OnInit {
     this.dialog.close()
   }
   savePic(pic){
-    console.log('Pic to save',pic)
-    this.picservice.savePic(pic,result => {
-      console.log('save pic',result)
-    })
+    switch(this.data.action){
+      case 'create':
+      console.log('Pic to save',pic)
+      this.picservice.savePic(pic,result => {
+        console.log('save pic',result)
+      })
+    break
+    case 'update':
+      this.picservice.updatePic(pic,result => {
+        console.log('update pic',result)
+      })
+    break
+    }
     this.dialog.close()
   }
 }
