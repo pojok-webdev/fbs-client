@@ -128,6 +128,7 @@
         <td matc-cell *matCellDef="let obj">
           <mat-select name="" placeholder="Select">
             <mat-option (click)="editServiceDialog(obj)">Edit</mat-option>
+            <mat-option (click)="removeServiceDialog(obj)">Remove</mat-option>
           </mat-select>
         </td>
       </ng-container>

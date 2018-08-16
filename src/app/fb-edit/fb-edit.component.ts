@@ -185,6 +185,20 @@ export class FbEditComponent implements OnInit {
       }
     )
   }
+  removeServiceDialog(obj){
+    this.dialog.open(ConfirmDialogComponent,{
+      width:'500px',
+      data:{
+        obj:obj,
+        objtype:'removeservice',
+        actParam:() => {
+          this.padiService.removeService(obj,result => {
+            this.reloadServiceDS()
+          })
+        }
+      }
+    })
+  }
   reloadFeeDS(){
     this._fee.getFees({nofb:this.route.snapshot.params.nofb}, result => {
       this.feeDS = new MatTableDataSource(result)

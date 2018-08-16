@@ -88,4 +88,18 @@ padiservices : Observable<any[]>
     }
     return out
   }
+  removeService(obj, callback){
+    console.log('service removed',obj)
+    this.padiservice = this.http.post(this.appconf.server+'/removefbservice',obj)
+    this.padiservice.subscribe(
+      data => {
+        console.log('Remove service',data)
+        callback(data)
+      },
+      err => {
+        console.log('Err Remove Service',err)
+        callback(err)
+      }
+    )
+  }
 }
