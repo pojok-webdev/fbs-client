@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FbService } from './../fb.service'
-import { MatTableDataSource } from '@angular/material'
+import { MatTableDataSource, MatDialog } from '@angular/material'
 import { AuthService } from '../auth.service';
 import { ActivatedRoute } from '@angular/router';
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-fbs',
@@ -18,7 +19,12 @@ export class FbsComponent implements OnInit {
   fbPageSizeOptions = [
     5,10,15
   ]
-  constructor(private fb: FbService,private auth:AuthService,private route : ActivatedRoute) {
+  constructor(
+    private fb: FbService,
+    private auth:AuthService,
+    private route : ActivatedRoute,
+    private dialog: MatDialog
+  ) {
     this.auth.isLogin((result,msg) => {
       if(result){
         console.log("Anda telah Login",msg)
@@ -59,6 +65,21 @@ export class FbsComponent implements OnInit {
       }else{
         console.log("Error Login",msg)
         window.location.href = "/login"
+      }
+    })
+  }
+  confirmRemoveFb(obj){
+    this.dialog.open(ConfirmDialogComponent,{
+      width:'500px',
+      data:{
+        obj:obj,
+        objtype:'removefb',
+        actParam:() => {
+          this.fb.removeFb(obj, result => {
+            console.log('remove result',result)
+            this.reloadFB()
+          })
+        }
       }
     })
   }
