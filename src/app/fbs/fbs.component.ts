@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Pipe, PipeTransform } from '@angular/core';
 import { FbService } from './../fb.service'
 import { MatTableDataSource, MatDialog } from '@angular/material'
 import { AuthService } from '../auth.service';

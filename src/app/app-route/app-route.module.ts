@@ -24,7 +24,8 @@ const routes: Routes = [
   {path:'userprofile',component:UserProfileComponent},
   {path:'userchangepassword',component:UserChangepasswordComponent},
   {path:'clients',component:ClientsComponent},
-  {path:'clientadd',component:ClientAddComponent}
+  {path:'clientadd',component:ClientAddComponent},
+  {path:'**',component:ClientsComponent}
 ]
 @NgModule({
   imports: [

@@ -53,6 +53,14 @@
         <mat-option routerLink="/fbedit/pics/{{element.nofb}}">PICs</mat-option>
         <mat-option routerLink="/fbedit/services/{{element.nofb}}">Services</mat-option>
         <mat-option routerLink="/fbedit/fees/{{element.nofb}}">Fees</mat-option>
+        <mat-option>
+          <mat-select placeholder="{{element.status}}">
+            <mat-option>Ignore</mat-option>
+            <mat-option>Valid</mat-option>
+            <mat-option>Expired</mat-option>
+            <mat-option>Canceled</mat-option>
+          </mat-select>
+        </mat-option>
         <mat-divider></mat-divider>
         <mat-option (click)="confirmRemoveFb(element)">Hapus</mat-option>
       </mat-select>
