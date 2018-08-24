@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
 @Injectable()
 export class globalVars {
-    server = 'http://localhost:2000'
+    server = 'http://pelanggan:2000'
 }
