@@ -33,7 +33,6 @@ import { PicEditComponent } from './pic-edit/pic-edit.component';
 import { PadiservicesComponent } from './padiservices/padiservices.component';
 import { PadiserviceAddComponent } from './padiservice-add/padiservice-add.component';
 import { FbFeeAddComponent } from './fb-fee-add/fb-fee-add.component';
-import { globalVars } from './globalVars';
 import { LoginComponent } from './login/login.component';
 import { FbAddComponent } from './fb-add/fb-add.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
@@ -87,8 +86,7 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
     MatTooltipModule
   ],
   providers: [
-    DatePipe,
-    globalVars
+    DatePipe
   ],
   entryComponents:[
     FbFeeAddComponent,

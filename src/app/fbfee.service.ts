@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { globalVars } from './globalVars';
+import { AppconfService } from './appconf.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +9,7 @@ import { globalVars } from './globalVars';
 export class FbfeeService {
   fee : Observable<any>
   fees : Observable<any[]>
-  constructor(private http : HttpClient,private appvar :globalVars) { }
+  constructor(private http : HttpClient,private appvar :AppconfService) { }
   getFees(obj,callback){
     this.fees = this.http.post<any[]>(this.appvar.server  +'/getfees',obj)
     this.fees.subscribe(

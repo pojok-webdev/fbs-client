@@ -9,3 +9,22 @@
     background: #000000;
     color: #ffffff;
 }
+.orderable:hover{
+    cursor:pointer;
+    color: #ee0f2d;
+}
+.cfbcount{
+    width: 5%;
+}
+.cname{
+    width: 40%;
+}
+.caddress{
+    width: 20%;
+}
+.cid{
+    width:5%;
+}
+.calias{
+    width: 20%;
+}

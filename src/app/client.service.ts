@@ -12,7 +12,9 @@ export class ClientService {
 
   constructor(private http: HttpClient, private appconf : AppconfService) { }
   getClients(obj,callback){
-    this.clients = this.http.get<any[]>(this.appconf.server+'/getclients/'+obj.segment+'/'+obj.offset)
+    this.clients = this.http.get<any[]>(
+      this.appconf.server+'/getclients/'+this.appconf.orderby+'/'+this.appconf.ordertype+'/'+obj.segment+'/'+obj.offset
+    )
     this.clients.subscribe(
       data => {
         callback(data)
@@ -47,6 +49,7 @@ export class ClientService {
     )
   }
   searchClient(obj,callback){
+    console.log("SearchObj",obj)
     this.clients = this.http.post<any[]>(this.appconf.server+'/searchclient',obj)
     this.clients.subscribe(
       data => {

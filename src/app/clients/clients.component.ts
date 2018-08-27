@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ClientService } from '../client.service';
 import { PageEvent } from '@angular/material';
+import { AppconfService } from '../appconf.service';
 
 @Component({
   selector: 'app-clients',
@@ -17,7 +18,7 @@ export class ClientsComponent implements OnInit {
   curIndex=0
   searchdata = ''
   pageEvent : PageEvent
-  constructor(private client : ClientService) {
+  constructor(private client : ClientService, private appconf : AppconfService) {
     this.client.getClients({segment:this.pageSize,offset:0},result => {
       this.objs = result
       console.log("Obj",this.objs)
@@ -59,5 +60,26 @@ export class ClientsComponent implements OnInit {
     if (key==="Enter"){
       this.clientSearch(this.searchdata)
     }
+  }
+  setOrder(columnName){
+    if(this.appconf.ordertype == "asc"){
+      this.appconf.ordertype = "desc"
+    }else{
+      this.appconf.ordertype = "asc"
+    }
+    this.client.getClients({
+      orderby:columnName,
+      ordertype:this.appconf.ordertype,
+      segment:this.pageSize,
+      offset:0
+    },result => {
+      this.objs = result
+      console.log("Obj",this.objs)
+    })
+    this.client.getClientsLength(result => {
+      console.log("Client Amount",result)
+      this.length = result
+    })
+
   }
 }
