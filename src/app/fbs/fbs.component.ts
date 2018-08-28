@@ -6,6 +6,31 @@ import { ActivatedRoute } from '@angular/router';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 import { ClientService } from '../client.service';
 
+
+@Pipe({name:'showHumanStatus'})
+export class showHumanStatusPipe implements PipeTransform{
+  transform(value:string):string{
+    let humanStatus
+    switch(value){
+      case '0':
+      humanStatus = 'ignore'
+      break 
+      case '1':
+      humanStatus = 'valid'
+      break 
+      case '2':
+      humanStatus = 'canceled'
+      break 
+      case '3':
+      humanStatus = 'expired'
+      break 
+    }
+    return humanStatus
+  }
+}
+
+
+
 @Component({
   selector: 'app-fbs',
   templateUrl: './fbs.component.html',
@@ -22,7 +47,8 @@ export class FbsComponent implements OnInit {
   ]
   obj = {
     name:'',
-    id:''
+    id:'',
+    status:''
   }
   constructor(
     private fb: FbService,
@@ -102,5 +128,36 @@ export class FbsComponent implements OnInit {
     })
   }
   ngOnInit() {
+  }
+  getHumanStatus(status){
+    let out
+    switch (status){
+      case '0':
+        out = 'ignored'
+      break;
+      case '1':
+        out = 'valid'
+      break;
+      case '2':
+        out = 'canceled'
+      break;
+      case '3':
+        out = 'expired'
+      break;
+    }
+    return out
+  }
+  changeStatus(element,status){
+    element.status = status
+    element.period1 = this.changeDateformat(element.period1)
+    element.period2 = this.changeDateformat(element.period2)
+    element.activationdate = this.changeDateformat(element.activationdate)
+    this.fb.updateFb(element, result => {
+      console.log("Success update status",result)
+    })
+  }
+  changeDateformat(date){
+    let out = date.split("T")
+    return out[0]
   }
 }

@@ -39,11 +39,11 @@
   </ng-container>
   <ng-container matColumnDef="period1">
     <th mat-header-cell *matHeaderCellDef>Period 1</th>
-    <td mat-cell *matCellDef="let element">{{ element.period1 }}</td>
+    <td mat-cell *matCellDef="let element">{{ element.period1|padidateformat }}</td>
   </ng-container>
   <ng-container matColumnDef="period2">
     <th mat-header-cell *matHeaderCellDef>Period 2</th>
-    <td mat-cell *matCellDef="let element">{{ element.period2 }}</td>
+    <td mat-cell *matCellDef="let element">{{ element.period2|padidateformat }}</td>
   </ng-container>
   <ng-container matColumnDef="actions">
     <th mat-header-cell *matHeaderCellDef>Actions</th>
@@ -54,11 +54,11 @@
         <mat-option routerLink="/fbedit/services/{{element.nofb}}">Services</mat-option>
         <mat-option routerLink="/fbedit/fees/{{element.nofb}}">Fees</mat-option>
         <mat-option>
-          <mat-select placeholder="{{element.status}}">
-            <mat-option>Ignore</mat-option>
-            <mat-option>Valid</mat-option>
-            <mat-option>Expired</mat-option>
-            <mat-option>Canceled</mat-option>
+          <mat-select placeholder="{{element.status|showHumanStatus}}">
+            <mat-option value="0" (click)="changeStatus(element,'0')">Ignore</mat-option>
+            <mat-option value="1" (click)="changeStatus(element,'1')">Valid</mat-option>
+            <mat-option value="2" (click)="changeStatus(element,'2')">Expired</mat-option>
+            <mat-option value="3" (click)="changeStatus(element,'3')">Canceled</mat-option>
           </mat-select>
         </mat-option>
         <mat-divider></mat-divider>

@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { FbsComponent } from './fbs/fbs.component';
+import { FbsComponent, showHumanStatusPipe } from './fbs/fbs.component';
 
 import { RouterModule } from '@angular/router'
 import { AppRouteModule } from './app-route/app-route.module';
@@ -42,6 +42,7 @@ import { ClientAddComponent } from './client-add/client-add.component';
 import { FbServiceAddComponent } from './fb-service-add/fb-service-add.component';
 import { PicAddComponent } from './pic-add/pic-add.component';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
+import { DateformatPipe } from './dateformat.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,7 +61,9 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
     ClientAddComponent,
     FbServiceAddComponent,
     PicAddComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    showHumanStatusPipe,
+    DateformatPipe
   ],
   imports: [
     BrowserModule,
@@ -86,7 +89,8 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
     MatTooltipModule
   ],
   providers: [
-    DatePipe
+    DatePipe,
+    showHumanStatusPipe
   ],
   entryComponents:[
     FbFeeAddComponent,
